@@ -1,0 +1,451 @@
+{
+    "0B": {
+        "sample":     100
+    },
+    "01": {},
+    "0E": {
+        "sample":     10,
+        "battCurr":   [  4, "u16", "iclow._serial_.batCurr"               ],
+        "busVol":     [  8, "u32", "iclow._serial_.busVol"                ],
+        "dcTemp":     [ 12, "u16", "iclow._serial_.dcTemp"                ],
+        "fanLevel":   [ 14,  "u8", "iclow._serial_.fanLevel"              ],
+        "bmsChgCurr": [ 22, "u16", "iclow._serial_.bmsChgCurr"            ],
+        "chgBatVol":  [ 26, "u16", "iclow._serial_.chgBatVol"             ],
+        "realSoc":    [ 31,  "u8", "iclow._serial_.realSoc"               ]
+    },
+    "1B": {},
+    "22": {
+        "sample":     100
+    },
+    "24": {
+        "sample":     100,
+        "comment":    "module announce serial number",
+        "serial":     [  8, "s16", "onLineModuleSnList[x].moduleSn"       ]
+    },
+    "28:21": {
+        "sample":     10,
+        "serial":     [  0, "s16", "onLineModuleSnList[x].moduleSn"       ],
+        "errCode":    [ 16, "u16", "bbcin._serial_.errCode"               ],
+        "modVer":     [ 20, "dqr", "onLineModuleSnList[x].moduleVersion"  ],
+        "battVol":    [ 24, "u16", "bbcout._serial_.batVol"               ],
+        "ldOutVol":   [ 36, "u16", "bbcout._serial_.ldOutVol"             ],
+        "batWatts":   [ 44, "u16", "bbcout._serial_.batWatts"             ],
+        "l1Curr":     [ 48, "i16", "bbcout._serial_.l1Curr"               ],
+        "l2Curr":     [ 52, "i16", "bbcout._serial_.l2Curr"               ],
+        "hs1Temp":    [ 56, "u16", "bbcout._serial_.hs1Temp"              ],
+        "hs2Temp":    [ 58, "u16", "bbcout._serial_.hs2Temp"              ],
+        "workMode":   [ 62,  "u8", "bbcout._serial_.workMode"             ],
+        "dayEnergy":  [ 68, "u16", "bbcout._serial_.dayEnergy"            ],
+        "dsgEnergy":  [ 72, "u32", "bbcout._serial_.dsgEnergy"            ],
+        "altVoltLmt": [ 94,  "u8", "bbcout._serial_.altVoltLmt"           ]
+    },
+    "28:52": {
+        "sample":     10,
+        "serial":     [  0, "s16", "onLineModuleSnList[x].moduleSn"       ],
+        "errCode":    [ 16, "u16", "bbcin._serial_.errCode"               ],
+        "modVer":     [ 20, "dqr", "onLineModuleSnList[x].moduleVersion"  ],
+        "battVol":    [ 36, "u16", "bbcin._serial_.batVol"                ],
+        "battCurr":   [ 40, "u16", "bbcin._serial_.batCurr"               ],
+        "batWatts":   [ 44, "u16", "bbcin._serial_.batWatts"              ],
+        "l1Curr":     [ 48, "i16", "bbcin._serial_.l1Curr"                ],
+        "l2Curr":     [ 52, "i16", "bbcin._serial_.l2Curr"                ],
+        "workMode":   [ 62,  "u8", "bbcin._serial_.workMode"              ],
+        "workMode2":  [ 63,  "u8", "bbcin._serial_.workMode2"             ],
+        "chgMaxCurr": [ 64, "u16", "bbcin._serial_.chgMaxCurr"            ],
+        "dayEnergy":  [ 68, "u16", "bbcin._serial_.dayEnergy"             ],
+        "hs1Temp":    [ 56, "u16", "bbcin._serial_.hs1Temp"               ],
+        "hs2Temp":    [ 58, "u16", "bbcin._serial_.hs2Temp"               ],
+        "dsgEnergy":  [ 72, "u32", "bbcin._serial_.dsgEnergy"             ],
+        "bpOnlinePos":[ 77,  "u8", "bbcin._serial_.bpOnlinePos"           ],
+        "altCableLen":[ 82, "i32", "bbcin._serial_.altCableLen"           ],
+        "altVoltLmt": [ 94,  "u8", "bbcin._serial_.altVoltLmt"            ]
+    },
+    "37": {
+        "sample":     100
+    },
+    "3F": {},
+    "49": {
+        "sample":     1
+    },
+    "49:51": {
+        "dcAltState": [  7,  "u8", ""                                     ],
+        "dcOutState": [  9,  "u8", ""                                     ]
+    },
+    "4A": {
+        "comment":   "ios app requesting data?"
+    },
+    "4A:20": {
+        "comment":   "zeros"
+    },
+    "4F:03": {
+        "sample":     100
+    },
+    "4F:20": {
+        "value":      [ 0, "u16", "" ],
+        "channel":    [ 6, "str", "" ]
+    },
+    "4F:21": {
+        "sample":     10,
+        "totalSoc":   [  0,  "u8", "bmsTotal.totalSoc"                    ],
+        "totCDState": [  1,  "u8", "bmsTotal.totalChgDsgState"            ],
+        "totalInWat": [  2, "u16", "bmsTotal.totalInWatts"                ],
+        "totalOutWat":[  6, "i16", "bmsTotal.totalOutWatts"               ],
+        "totalRemTim":[ 10, "u16", "bmsTotal.totalRemainTime"             ],
+        "bmsChgUpln": [ 15,  "u8", "bmsTotal.bmsChgUpline"                ],
+        "bmsChgDnln": [ 16,  "u8", "bmsTotal.bmsDsgDownline"              ],
+        "oilStpUpln": [ 18,  "u8", "bmsTotal.oilStopUpline"               ],
+        "lcdOffConfS":[ 20, "i32", "bmsTotal.lcdOffConfirmS"              ],
+        "totalCap":   [ 25, "u16", "bmsTotal.totalFullCap"                ],
+        "totalAmp":   [ 27, "u16", "bmsTotal.totalAmp"                    ]
+    },
+    "4F:52": {
+        "name":       [  6, "str", ""                                     ]
+    },
+    "5C": {
+        "Set_ACOut":  [  4,  "u8", ""                                     ]
+    },
+    "5F": {
+        "sample":     1
+    },
+    "63": {
+        "channel":    [  0,  "u8", ""                                     ],
+        "icon":       [  1,  "u8", ""                                     ],
+        "name":       [  5, "str", ""                                     ]
+    },
+    "65": {
+        "sample":     100
+    },
+    "68": {
+        "sample":     20,
+        "serial":     [  0,  "s16", "onLineModuleSnList[x].moduleSn"      ],
+        "soc":        [  37,  "u8", "bp5000._serial_.soc"                 ],
+        "volt":       [  38, "u16", "bp5000._serial_.vol"                 ],
+        "temp":       [  46,  "u8", "bp5000._serial_.temp"                ],
+        "chgState":   [  47,  "u8", "bp5000._serial_.chgState"            ],
+        "remainCap":  [  57, "u32", "bp5000._serial_.remainCap"           ],
+        "remainTime": [  86, "u16", "bp5000._serial_.remainTime"          ],
+        "inWatts":    [  78,  "u8", "bp5000._serial_.inWatts"             ],
+        "outWatts":   [  82, "i32", "bp5000._serial_.outWatts"            ],
+        "eventCode":  [ 116, "i32", "bp5000._serial_.eventCode"           ],
+        "heatFlag":   [  94,  "u8", "bp5000._serial_.ptcHeatingFlag"      ]
+    },
+    "6A": {
+        "sample":     10,
+        "serial":     [  0, "s16", "onLineModuleSnList[x].moduleSn"       ],
+        "modVer":     [ 20, "dqr", "onLineModuleSnList[x].moduleVersion"  ],
+        "acInVol":    [ 25, "u32", "ldac._serial_.acInVol"                ],
+        "acChCur0":   [ 29, "u32", "ldac._serial_.acChCur[0]"             ],
+        "acChCur1":   [ 33, "u32", "ldac._serial_.acChCur[0]"             ],
+        "acChCur2":   [ 37, "u32", "ldac._serial_.acChCur[0]"             ],
+        "acChCur3":   [ 41, "u32", "ldac._serial_.acChCur[0]"             ],
+        "acChCur4":   [ 45, "u32", "ldac._serial_.acChCur[0]"             ],
+        "acChCur5":   [ 49, "u32", "ldac._serial_.acChCur[0]"             ],
+        "acChWatt0":  [ 53, "u32", "ldac._serial_.acChWatt[0]"            ],
+        "acChWatt1":  [ 57, "u32", "ldac._serial_.acChWatt[1]"            ],
+        "acChWatt2":  [ 61, "u32", "ldac._serial_.acChWatt[2]"            ],
+        "acChWatt3":  [ 65, "u32", "ldac._serial_.acChWatt[3]"            ],
+        "acChWatt4":  [ 69, "u32", "ldac._serial_.acChWatt[4]"            ],
+        "acChWatt5":  [ 73, "u32", "ldac._serial_.acChWatt[5]"            ],
+        "acTotalWatt":[ 77, "u32", "ldac._serial_.acTotalWatts"           ],
+        "acTemp1":    [ 81, "u16", "ldac._serial_.acTemp1"                ],
+        "acTemp2":    [ 83, "u16", "ldac._serial_.acTemp1"                ],
+        "acChSta":    [ 85, "u16", "ldac._serial_.acChSta"                ],
+        "errCodeAdd0":[ 87, "u16", "ldac._serial_.errorCodeAdd[0]"        ],
+        "errCodeAdd1":[ 89, "u16", "ldac._serial_.errorCodeAdd[1]"        ],
+        "errCodeAdd2":[ 91, "u16", "ldac._serial_.errorCodeAdd[2]"        ],
+        "errCodeAdd3":[ 93, "u16", "ldac._serial_.errorCodeAdd[3]"        ],
+        "errCodeAdd4":[ 95, "u16", "ldac._serial_.errorCodeAdd[4]"        ],
+        "errCodeAdd5":[ 97, "u16", "ldac._serial_.errorCodeAdd[5]"        ],
+        "errCodeAdd6":[ 99, "u16", "ldac._serial_.errorCodeAdd[6]"        ]
+    },
+    "70": {
+        "sample":     1,
+        "comment":    "module announce detail",
+        "serial":     [  1, "s16", "onLineModuleSnList[x].moduleSn"       ],
+        "detail":     [ 18,  "u8", "onLineModuleSnList[x].moduleDetail"   ],
+        "type":       [ 19,  "u8", "onLineModuleSnList[x].moduleType"     ],
+        "modVer":     [ 20,  "dq", "onLineModuleSnList[x].moduleVersion"  ],
+        "ldver":      [ 24,  "dq", "onLineModuleSnList[x].loaderVersion"  ],
+        "custom":     [ 28, "u32", "onLineModuleSnList[x].customData"     ]
+    },
+    "70:20": {},
+    "76": {
+        "sample":     1
+    },
+    "80": {
+        "sample":     100
+    },
+    "85": {},
+    "86": {
+        "sample":     100,
+        "serial":     [  0, "s16", ""                                     ]
+    },
+    "89": {
+        "sample":     1
+    },
+    "8A": {
+        "sample":     100,
+        "Set_DCOut":  [  3,  "u8", ""                                     ]
+    },
+    "8A:03": {
+        "Set_DCOut":  [  3,  "u8", ""                                     ]
+    },
+    "8C:12": {
+        "sample":     1,
+        "time":       [ 12, "s20", ""                                     ]
+    },
+    "8F": {
+        "sample":     1,
+        "comment":    "contains a clear text date time stamp",
+        "time":       [ 12, "s20", ""                                     ]
+    },
+    "90": {},
+    "99": {
+        "sample":     10,
+        "outVol":     [ 12, "i32", "ichigh._serial_.outVol"               ],
+        "outWatts":   [ 20, "i16", "ichigh._serial_.outWatts"             ],
+        "outVa":      [ 24, "i16", "ichigh._serial_.outVa"                ]
+    },
+    "9A": {
+        "sample":     100
+    },
+    "9F": {
+        "sample":     100
+    },
+    "9F:51": {
+        "sample":     1,
+        "comment":    "sent when app opened"
+    },
+    "A0": {
+        "sample":     10,
+        "comment":    "some sort of counter. grouped by module record type",
+        "b0":         [  0, "u8", ""                                      ],
+        "b1":         [  1, "u8", ""                                      ],
+        "b2":         [  2, "u8", ""                                      ]
+    },
+    "A3": {
+        "comment":    "toggle inputs / outputs through phone app. A3:05 and A3:50",
+        "Set_PVIn1":  [  0, "u8", ""                                      ],
+        "Set_PVIn2":  [  1, "u8", ""                                      ]
+    },
+    "AB": {
+        "comment":    "coincides with toggling solar input"
+    },
+    "AD": {
+        "sample":     10,
+        "serial":     [  0,  "s16", ""                                    ]
+    },
+    "AD:20": {
+        "sample":     10,
+        "serial":     [ 136,  "s16", ""                                   ]
+    },
+    "AD:21": {
+        "sample":     10,
+        "serial":     [  0,  "s16", ""                                    ],
+        "dcTemp1":    [ 132, "u16", "lddc._serial_.dcTemp1"               ],
+        "dcTemp2":    [ 134, "u16", "lddc._serial_.dcTemp2"               ],
+        "dcChRelay":  [ 136, "u16", "lddc._serial_.dcChRelay"             ],
+        "errCodeAd0": [ 141, "u16", "lddc._serial_.errorCodeAdd[0]"       ],
+        "errCodeAd1": [ 143, "u16", "lddc._serial_.errorCodeAdd[1]"       ],
+        "errCodeAd2": [ 145, "u16", "lddc._serial_.errorCodeAdd[2]"       ],
+        "errCodeAd3": [ 147, "u16", "lddc._serial_.errorCodeAdd[3]"       ],
+        "errCodeAd4": [ 149, "u16", "lddc._serial_.errorCodeAdd[4]"       ],
+        "errCodeAd5": [ 151, "u16", "lddc._serial_.errorCodeAdd[5]"       ],
+        "errCodeAd6": [ 153, "u16", "lddc._serial_.errorCodeAdd[6]"       ],
+        "errCodeAd7": [ 155, "u16", "lddc._serial_.errorCodeAdd[7]"       ],
+        "errCodeAd8": [ 157, "u16", "lddc._serial_.errorCodeAdd[8]"       ],
+        "errCodeAd9": [ 159, "u16", "lddc._serial_.errorCodeAdd[9]"       ],
+        "errCodeAd10":[ 161, "u16", "lddc._serial_.errorCodeAdd[10]"      ],
+        "errCodeAd11":[ 163, "u16", "lddc._serial_.errorCodeAdd[11]"      ],
+        "errCodeAd12":[ 165, "u16", "lddc._serial_.errorCodeAdd[12]"      ]
+    },
+    "B5": {},
+    "B9": {},
+    "C0": {
+        "sample":     10,
+        "serial":     [  0, "s16", ""                                     ],
+        "battVol":    [  28, "u16", "kitscc._serial_.batVol"              ],
+        "battCurr":   [  32, "u16", "kitscc._serial_.batCurr"             ],
+        "battWatts":  [  36, "u32", "kitscc._serial_.batWatts"            ],
+        "pv1InVol":   [  40, "u32", "kitscc._serial_.pv1InVol"            ],
+        "pv1InCurr":  [  44, "u16", "kitscc._serial_.pv1InCurr"           ],
+        "pv1InWatt":  [  48, "u16", "kitscc._serial_.pv1InWatts"          ],
+        "pv2InCurr":  [  56, "u16", "kitscc._serial_.pv2InCurr"           ],
+        "pv2InVol":   [  52, "u32", "kitscc._serial_.pv2InVol"            ],
+        "pv2InWatt":  [  60, "u16", "kitscc._serial_.pv2InWatts"          ],
+        "l1Curr":     [  64, "u16", "kitscc._serial_.l1Curr"              ],
+        "l2Curr":     [  68, "u16", "kitscc._serial_.l2Curr"              ],
+        "hs1Temp":    [  72,  "u8", "kitscc._serial_.hs1Temp"             ],
+        "hs2Temp":    [  74,  "u8", "kitscc._serial_.hs2Temp"             ],
+        "alt1CablLn": [  96, "u16", "kitscc._serial_.alt1CableLen"        ],
+        "alt2CablLn": [ 100, "u16", "kitscc._serial_.alt2CableLen"        ],
+        "alt1VoltLm": [ 116, "u16", "kitscc._serial_.alt1VoltLmt"         ],
+        "alt2VoltLm": [ 118, "u16", "kitscc._serial_.alt2VoltLmt"         ],
+        "alt1VoltLmE":[ 120,  "u8", "kitscc._serial_.alt1VoltLmtEn"       ],
+        "alt2VoltLmE":[ 121,  "u8", "kitscc._serial_.alt2VoltLmtEn"       ]
+    },
+    "C3": {},
+    "CB": {
+        "sample":     100,
+        "b0":         [  0, "u8", ""                                      ]
+    },
+    "CB:00": {
+        "sample":     1,
+        "comment":    "corresponds with output value changes?",
+        "b0":         [  0, "u8", ""                                      ]
+    },
+    "CB:03": {
+        "comment":    "corresponds with toggling PV input from console (magic?)",
+        "b0":         [  0, "u8", ""                                      ]
+    },
+    "CB:20": {
+        "comment":    "data sent to app when opened",
+        "b0":         [  0, "u8", ""                                      ]
+    },
+    "CB:52": {
+        "comment":    "corresponds with toggling PV input from console (magic?)",
+        "b0":         [  0, "u8", ""                                      ]
+    },
+    "D1": {},
+    "D2": {
+        "comment":   "ios app requesting data?"
+    },
+    "D2:20": {
+        "sample":     1,
+        "serial":     [  1,  "s16", ""                                    ],
+        "comment":    "data sent to app when opened"
+    },
+    "D4:03": {
+        "sample":     1,
+        "comment":    "tracks with changes to PV input toggles. verbose"
+    },
+    "D8": {},
+    "DB": {
+        "sample":     10,
+        "serial":     [  0, "s16", ""                                     ],
+        "batCurr":    [ 28, "u16", "iclow._serial_.batCurr"               ],
+        "busVol":     [ 32, "u32", "iclow._serial_.busVol"                ],
+        "dcTemp":     [ 36, "u16", "iclow._serial_.dcTemp"                ],
+        "bmsChgCurr": [ 46, "u16", "iclow._serial_.bmsChgCurr"            ],
+        "chgBatVol":  [ 50, "u16", "iclow._serial_.chgBatVol"             ]
+    },
+    "DE": {
+        "sample":     100
+    },
+    "DE:03": {
+        "comment":    "might correspond with pv input shut off from app (magic?)"
+    },
+    "E1": {
+        "comment":    "some sort of counter",
+        "b0":         [  0, "u8", ""                                      ],
+        "b1":         [  1, "u8", ""                                      ],
+        "b2":         [  2, "u8", ""                                      ]
+    },
+    "E1:02": {
+        "comment":    "coincides with toggling solar input",
+        "b0":         [  0, "u8", ""                                      ],
+        "b1":         [  1, "u8", ""                                      ],
+        "b2":         [  2, "u8", ""                                      ]
+    },
+    "E1:04": {
+        "comment":    "coincides with toggling solar input",
+        "b0":         [  0, "u8", ""                                      ],
+        "b1":         [  1, "u8", ""                                      ],
+        "b2":         [  2, "u8", ""                                      ]
+    },
+    "E1:20": {
+        "sample":     1,
+        "comment":    "data sent to app when opened?"
+    },
+    "E1:51": {
+        "comment":    "coincides with toggling solar input",
+        "b0":         [  0, "u8", ""                                      ],
+        "b1":         [  1, "u8", ""                                      ],
+        "b2":         [  2, "u8", ""                                      ]
+    },
+    "E2:00": {
+        "comment":    "data sent to app when opened",
+        "zeros":      [  0, "s16", ""                                     ]
+    },
+    "E2:03": {
+        "sample":     100,
+        "comment":    "touch console status data?",
+        "unk0":       [  4, "u16", ""                                     ],
+        "unk1":       [  8, "u16", ""                                     ],
+        "unk2":       [ 12, "u16", ""                                     ],
+        "unk3":       [ 14, "u16", ""                                     ]
+    },
+    "E2:20": {
+        "sample":     1,
+        "comment":    "data sent to app when opened?"
+    },
+    "F1:01": {
+        "sample":     100,
+        "comment":    "[589254200][ld_sys.c][working_exe][56 ][INFO]: LD_RUNING"
+    },
+    "F3:03": {
+        "sample":     1,
+        "comment":    "coincides with toggling solar input. verbose"
+    },
+    "F4": {
+        "comment":    "PV1 input toggle from console. F4:05 and F4:50",
+        "Set_PVIn1":  [  0, "u8", ""                                      ],
+        "Set_PVIn2":  [  1, "u8", ""                                      ]
+    },
+    "F4:02": {
+        "sample":     1,
+        "comment":    "some two byte payload"
+    },
+    "F4:20": {
+        "sample":     1,
+        "comment":    "some two byte payload"
+    },
+    "F7:35": {
+        "comment":    "tracks with changes to PV input toggles",
+        "s1":         [  4, "s4", ""                                      ],
+        "s2":         [ 10, "s4", ""                                      ]
+    },
+    "F8": {
+        "sample":     10,
+        "serial":     [  0, "s16", ""                                     ],
+        "inWatts":    [ 24, "u16", "ichigh._serial_.inWatts"              ],
+        "outCurr":    [ 32, "u16", "ichigh._serial_.outCurr"              ],
+        "outWatts":   [ 36, "u16", "ichigh._serial_.outWatts"             ],
+        "acTemp":     [ 44,  "u8", "ichigh._serial_.acTemp"               ],
+        "cfgOutFreq": [ 48,  "u8", "ichigh._serial_.cfgOutFreq"           ],
+        "acFreqSet":  [ 50,  "u8", "ichigh._serial_.appCfg.acFreqSet"     ],
+        "acVolSet":   [ 61,  "u8", "ichigh._serial_.appCfg.acVolSet"      ],
+        "outFreq":    [ 62,  "u8", "ichigh._serial_.outFreq"              ],
+        "acMxCurSer": [ 63,  "u8", "ichigh._serial_.appCfg.acMaxCurrSer"  ],
+        "passByMxCur":[ 67,  "u8", "ichigh._serial_.appCfg.passByMaxCurr" ],
+        "ch2Watt":    [ 70, "u16", "ichigh._serial_.ch2Watt"              ],
+        "stdyTime":   [ 78, "u16", "ichigh._serial_.standbyTime"          ]
+    },
+    "[C] 22": {
+        "sample": 1
+    },
+    "[C] 4F": {
+        "sample": 1
+    },
+    "[C] 5F": {
+        "sample": 1
+    },
+    "[C] 76": {
+        "sample": 1
+    },
+    "[C] 8A": {
+        "sample": 1
+    },
+    "[C] 9F": {
+        "sample": 1
+    },
+    "[C] B5": {
+        "sample": 1
+    },
+    "[C] F4": {
+        "sample": 1
+    },
+    "cmd:106": {
+        "sample": 100
+    }
+}

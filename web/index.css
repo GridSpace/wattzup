@@ -1,0 +1,16 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.chart {
+    width: 100%;
+    max-width: 1000px;
+}
+.control {
+    flex-direction: row;
+    gap: 5px;
+}
+.control select {
+    margin-right: 10px;
+}

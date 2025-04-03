@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>PowerKit</title>
+        <link rel="stylesheet" href="index.css">
+        <link rel="icon" type="image/png" sizes="32x32" href="/graph.png">
+        <script src="index.js" type="module"></script>
+        <script src="chart.js" type="module"></script>
+        <script src="hammer.js" type="module"></script>
+        <script src="chart-zoom.js" type="module"></script>
+    </head>
+    <body>
+        <div class="control">
+            <label>start</label>
+            <select id="set_start">
+                <option value="6">6 hours</option>
+                <option value="12">12 hours</option>
+                <option value="18">18 hours</option>
+                <option value="24" selected>24 hours</option>
+                <option value="36">36 hours</option>
+                <option value="48">48 hours</option>
+                <option value="72">72 hours</option>
+            </select>
+            <label>end</label>
+            <select id="set_end">
+                <option value="0" selected>now</option>
+                <option value="6">6 hours</option>
+                <option value="12">12 hours</option>
+                <option value="18">18 hours</option>
+                <option value="24">24 hours</option>
+                <option value="36">36 hours</option>
+                <option value="48">48 hours</option>
+                <option value="72">72 hours</option>
+            </select>
+            <label>sample</label>
+            <select id="set_sample">
+                <option value="0" selected>0</option>
+                <option value="1">1</option>
+                <option value="5">5</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="60">60</option>
+            </select>
+            <button onclick="update_from_ui()">reload</button>
+        </div>
+        <div class="chart"><canvas id="pv"></canvas></div>
+        <div class="chart"><canvas id="io"></canvas></div>
+        <div class="chart"><canvas id="bms"></canvas></div>
+        <div class="chart"><canvas id="ac"></canvas></div>
+        <div class="chart"><canvas id="change"></canvas></div>
+        <div class="chart"><canvas id="total"></canvas></div>
+        <div class="chart"><canvas id="rem"></canvas></div>
+    </body>
+</html>
