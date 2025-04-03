@@ -25,7 +25,7 @@ You have been warned.
 
 ## Future
 
-Relate hardware: solar generators, inverters, etc
+Related hardware: solar generators, inverters, etc
 
 ## Requirements
 
@@ -37,7 +37,7 @@ Relate hardware: solar generators, inverters, etc
 
 ## SorryNotSorry
 
-WattzUp is written in Javascript. There is no Python here.
+Wattzup is written in Javascript. There is no Python here.
 
 ## First Time Setup
 
@@ -66,6 +66,8 @@ this prints the headers and records (`--rec`) for messages that match *all* crit
 * any of several given dv4 ids
 
 `canlog` defaults to the `candump` log format. if you want to use the `.csv` format produced by SavvyCAN, then use the `--csv` command line option.
+
+see [canlog usage](./docs/canlog-usage.md) for more details
 
 ![canlog example output](./docs/canlog-example.png)
 
