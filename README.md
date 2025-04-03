@@ -20,8 +20,8 @@ You have been warned.
 
 ## Focus
 
-* Extracting and decoding EcoFlow CANbus log files
-* Replay of discrete user events to control devices via CANbus
+* Extracting and decoding EcoFlow CAN bus log files
+* Replay of discrete user events to control devices via CAN bus
 
 ## Future
 
@@ -31,7 +31,7 @@ Related hardware: solar generators, inverters, etc
 
 * clone this repo (git skills)
 * nodejs 20 or newer (and knowing what that is)
-* raspberry pi with a CAN adapter (or windows equivalent)
+* raspberry pi with a [CAN adapter](https://www.amazon.com/dp/B08942X9QB) (or windows equivalent)
 * any EcoFlow product with a CAN bus
 * patience, curiosity, grit, and a dash of outrage
 
@@ -82,6 +82,7 @@ use the `--pivot` feature and dump data into a google sheets table to find user 
 * adding record types to [lib/structs.json](lib/structs.json)
 * setup processes for getting CAN data out of devices
 * sample log files for new devices
+* join the [Discord](https://discord.gg/CCrNc8akyF) server
 
 ## Related Information
 
