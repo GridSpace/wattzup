@@ -15,7 +15,8 @@ You have been warned.
 
 ## Reason
 
-Local control and freedom from the tyranny of the cloud
+* Local control and freedom from the tyranny of the cloud
+* [It's the only way forward](https://forum.grid.space/t/ecoflow-powerkit-canbus-hack/2457/1)
 
 ## Focus
 
@@ -28,11 +29,11 @@ Relate hardware: solar generators, inverters, etc
 
 ## Requirements
 
-* clone of this repo (git skills)
+* clone this repo (git skills)
 * nodejs 20 or newer (and knowing what that is)
 * raspberry pi with a CAN adapter (or windows equivalent)
-* any ecoflow product with a CAN bus
-* patience, curiosity, grit, moral outrage
+* any EcoFlow product with a CAN bus
+* patience, curiosity, grit, and a dash of outrage
 
 ## SorryNotSorry
 
@@ -60,9 +61,11 @@ cat <filelist> | node lib/canlog - \
 
 this prints the headers and records (`--rec`) for messages that match *all* critera:
 * channel `B` messages
-* any of several given types
+* any of several given record types
 * any of several given node ids
 * any of several given dv4 ids
+
+`canlog` defaults to the `candump` log format. if you want to use the `.csv` format produced by SavvyCAN, then use the `--csv` command line option.
 
 ![canlog example output](./docs/canlog-example.png)
 
@@ -77,3 +80,9 @@ use the `--pivot` feature and dump data into a google sheets table to find user 
 * adding record types to [lib/structs.json](lib/structs.json)
 * setup processes for getting CAN data out of devices
 * sample log files for new devices
+
+## Related Information
+
+* [EcoFlow Power Link CAN wiring](https://manuals.ecoflow.com/us/product/power-link?lang=en_US)
+* [EcoFlow J1939 CAN protocol](https://websiteoss.ecoflow.com/cms/upload/2024/11/13/EcoFlow%20J1939%20Protocol_V1.02_20241112_1731460673096.pdf)
+* [EcoFlow-CanBus-Reverse-Engineering](https://github.com/bulldog5046/EcoFlow-CanBus-Reverse-Engineering)
