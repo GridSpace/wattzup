@@ -396,72 +396,118 @@ function load_charts() {
 
         // state of charge and temperatures
         const map = { 2:25, 1:-25, 0:0 };
+        const b1c = data.map((line,x) => line[b1_chg] == 2 ? { x, y:0.5 } : null).filter(v => v);
+        const b2c = data.map((line,x) => line[b2_chg] == 2 ? { x, y:1.5 } : null).filter(v => v);
+        const b3c = data.map((line,x) => line[b3_chg] == 2 ? { x, y:2.5 } : null).filter(v => v);
+        const b4c = data.map((line,x) => line[b4_chg] == 2 ? { x, y:3.5 } : null).filter(v => v);
+        const b1d = data.map((line,x) => line[b1_chg] == 1 ? { x, y:4.5 } : null).filter(v => v);
+        const b2d = data.map((line,x) => line[b2_chg] == 1 ? { x, y:5.5 } : null).filter(v => v);
+        const b3d = data.map((line,x) => line[b3_chg] == 1 ? { x, y:6.5 } : null).filter(v => v);
+        const b4d = data.map((line,x) => line[b4_chg] == 1 ? { x, y:7.5 } : null).filter(v => v);
+        const b1h = data.map((line,x) => line[b1_hot] == 1 ? { x, y:8.5 } : null).filter(v => v);
+        const b2h = data.map((line,x) => line[b2_hot] == 1 ? { x, y:9.5 } : null).filter(v => v);
+        const b3h = data.map((line,x) => line[b3_hot] == 1 ? { x, y:10.5 } : null).filter(v => v);
+        const b4h = data.map((line,x) => line[b4_hot] == 1 ? { x, y:11.5 } : null).filter(v => v);
         const cfg_chg = {
-            type: "bar",
+            type: "matrix",
             data: {
                 labels,
                 datasets: [{
-                        label: "chg/dis",
-                    data: data.map(line => map[line[b1_chg]]),
-                    stack: "stack",
+                    label: "b1",
+                    data: b1c,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
+                    ...def3,
+                },{
+                    label: "b2",
+                    data: b2c,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
-                    label: "chg/dis",
-                    data: data.map(line => map[line[b2_chg]]),
-                    stack: "stack",
+                    label: "b3",
+                    data: b3c,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
-                    label: "chg/dis",
-                    data: data.map(line => map[line[b3_chg]]),
-                    stack: "stack",
+                    label: "b4",
+                    data: b4c,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
-                    label: "chg/dis",
-                    data: data.map(line => map[line[b4_chg]]),
-                    stack: "stack",
+                    label: "b1",
+                    data: b1d,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
+                    ...def3,
+                },{
+                    label: "b2",
+                    data: b2d,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
-                    label: "heat",
+                    label: "b3",
+                    data: b3d,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
+                    ...def3
+                },{
+                    label: "b4",
+                    data: b4d,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
+                    ...def3
+                },{
+                    label: "b1",
                     data: data.map(line => map[line[b1_hot]]),
-                    stack: "stack",
+                    data: b1h,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
-                    label: "heat",
+                    label: "b2",
                     data: data.map(line => map[line[b2_hot]]),
-                    stack: "stack",
+                    data: b2h,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
-                    label: "heat",
+                    label: "b3",
                     data: data.map(line => map[line[b3_hot]]),
-                    stack: "stack",
+                    data: b3h,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
-                    label: "heat",
+                    label: "b4",
                     data: data.map(line => map[line[b4_hot]]),
-                    stack: "stack",
+                    data: b4h,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 }]
             },
             options: {
                 scales: {
                     x: {
-                        stacked: true,
+                        // stacked: true,
                     },
                     y: {
-                        beginAtZero: true,
+                        display: true,
+                        min: 0,
+                        max: 12
                     },
                 },
                 aspectRatio: 4,
                 ...plugins
             },
         };
-        palette = [ ...greens, ...reds ];
+        palette = [ ...greens, ...yellows, ...reds ];
         cfg_chg.data.datasets.forEach((ds, i) => {
-            // if (i < 4) ds.borderColor = yellows[i % yellows.length];
-            ds.backgroundColor = ctx => {
-                const { raw } = ctx;
-                return raw >= 0 ? palette[i % palette.length] : yellows[i % yellows.length];
-            }
+            ds.backgroundColor = palette[i % palette.length];
         });
         new Chart(document.getElementById('change'), cfg_chg);
 

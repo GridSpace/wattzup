@@ -1,1 +1,0 @@
-../node_modules/chartjs-plugin-zoom/dist/chartjs-plugin-zoom.js

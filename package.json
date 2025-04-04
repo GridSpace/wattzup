@@ -2,6 +2,7 @@
   "dependencies": {
     "@gridspace/net-level-client": "^0.1.10",
     "chart.js": "^4.4.1",
+    "chartjs-chart-matrix": "^3.0.0",
     "chartjs-plugin-zoom": "^2.0.1",
     "dayjs": "^1.11.10",
     "express": "^4.18.2",
@@ -10,7 +11,10 @@
     "static-serve": "^0.0.1"
   },
   "scripts": {
-    "setup": "npm i",
+    "setup": "npm i && npx vite build --config src/vite.config.js",
     "start": "node lib/web"
+  },
+  "devDependencies": {
+    "vite": "^6.2.5"
   }
 }
