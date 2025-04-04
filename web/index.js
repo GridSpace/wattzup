@@ -47,6 +47,37 @@ function avg(rows, size) {
     return nrows;
 }
 
+const yellows = [
+    'rgb(255, 205, 86)',
+    'rgb(245, 190, 60)',
+    'rgb(235, 175, 40)',
+    'rgb(225, 160, 20)'
+];
+const reds = [
+    'rgb(255, 99, 132)',
+    'rgb(235, 75, 110)',
+    'rgb(215, 50, 90)',
+    'rgb(190, 30, 70)',
+];
+const greens = [
+    'rgb(75, 192, 192)',
+    'rgb(60, 180, 150)',
+    'rgb(45, 160, 130)',
+    'rgb(30, 140, 110)',
+];
+const blues = [
+    'rgb(75, 180, 255)',
+    'rgb(54, 162, 235)',
+    'rgb(36, 140, 215)',
+    'rgb(20, 110, 190)',
+];
+const greys = [
+    'rgba(100, 100, 100, 0.5)',
+    'rgba(140, 140, 140, 0.5)',
+    'rgba(180, 180, 180, 0.5)',
+    'rgba(220, 220, 220, 0.5)',
+];
+
 function load_charts() {
     const merge = parseInt(localStorage.merge || 0) || 0;
     const def = {
@@ -55,6 +86,10 @@ function load_charts() {
     const def2 = {
         pointRadius: 0,
         borderWidth: 1.5
+    };
+    const def2t = {
+        ...def2,
+        borderWidth: 2
     };
     const def3 = {
         pointRadius: 0,
@@ -85,6 +120,7 @@ function load_charts() {
     const from = localStorage.from;
     const to = localStorage.to;
     const q = from ? `?from=${from}&to=${to}&src=${src}` : '';
+    let palette;
 
     fetch(`live.csv${q}`).then(r => r.text()).then(text => {
         const lines = text.split('\n')
@@ -185,43 +221,40 @@ function load_charts() {
                 labels,
                 datasets: [{
                     label: "bms watts out",
-                    data: data.map(line => -line[bms_wot]),
-                    stack: "stack",
+                    data: data.map(line => line[bms_wot]),
+                    // stack: "stack",
                     ...def
                 },{
+                    hidden: true,
                     label: "ch2 watts out",
-                    data: data.map(line => -line[bms_ch2]),
-                    stack: "stack",
+                    data: data.map(line => line[bms_ch2]),
+                    // stack: "stack",
                     ...def
                 },{
-                    // hidden: true,
                     type: "line",
                     label: "b1 watts out",
                     data: data.map(line => line[b1_wot]),
                     ...def2
                 },{
-                    // hidden: true,
                     type: "line",
                     label: "b2 watts out",
                     data: data.map(line => line[b2_wot]),
                     ...def2
                 },{
-                    // hidden: true,
                     type: "line",
                     label: "b3 watts out",
                     data: data.map(line => line[b3_wot]),
                     ...def2
                 },{
-                    // hidden: true,
                     type: "line",
                     label: "b4 watts out",
                     data: data.map(line => line[b4_wot]),
                     ...def2
                 },{
                     type: "line",
-                    label: "b* watts out",
-                    data: data.map(line => - line[b1_wot] - line[b2_wot] - line[b3_wot]),
-                    ...def2
+                    label: "batt watts out",
+                    data: data.map(line => line[b1_wot] + line[b2_wot] + line[b3_wot]),
+                    ...def2t
                 }]
             },
             options: {
@@ -237,6 +270,11 @@ function load_charts() {
                 ...plugins
             },
         };
+        palette = [ greys[2], greens[0], ...yellows, reds[0] ];
+        cfg_bms.data.datasets.forEach((ds, i) => {
+            ds.borderColor = palette[i % palette.length];
+            ds.backgroundColor = palette[i % palette.length];
+        });
         new Chart(document.getElementById('bms'), cfg_bms);
 
         // ac watts out by channel
@@ -247,32 +285,32 @@ function load_charts() {
                 datasets: [{
                     label: "ac0 watts",
                     type: "line",
-                    data: data.map(line => -line[ac_c0w]),
+                    data: data.map(line => line[ac_c0w]),
                     ...def2
                 },{
                     label: "ac1 watts",
                     type: "line",
-                    data: data.map(line => -line[ac_c1w]),
+                    data: data.map(line => line[ac_c1w]),
                     ...def2
                 },{
                     label: "ac2 watts",
                     type: "line",
-                    data: data.map(line => -line[ac_c2w]),
+                    data: data.map(line => line[ac_c2w]),
                     ...def2
                 },{
                     label: "ac3 watts",
                     type: "line",
-                    data: data.map(line => -line[ac_c3w]),
+                    data: data.map(line => line[ac_c3w]),
                     ...def2
                 },{
                     label: "ac4 watts",
                     type: "line",
-                    data: data.map(line => -line[ac_c4w]),
+                    data: data.map(line => line[ac_c4w]),
                     ...def2
                 },{
                     label: "ac5 watts",
                     type: "line",
-                    data: data.map(line => -line[ac_c5w]),
+                    data: data.map(line => line[ac_c5w]),
                     ...def2
                 }]
             },
@@ -356,31 +394,6 @@ function load_charts() {
         };
         new Chart(document.getElementById('pv'), cfg_pv);
 
-        const yellows = [
-            'rgb(255, 205, 86)',
-            'rgb(245, 190, 60)',
-            'rgb(235, 175, 40)',
-            'rgb(225, 160, 20)'
-        ];
-        const reds = [
-            'rgb(255, 99, 132)',
-            'rgb(235, 75, 110)',
-            'rgb(215, 50, 90)',
-            'rgb(190, 30, 70)',
-        ];
-        const greens = [
-            'rgb(75, 192, 192)',
-            'rgb(60, 180, 150)',
-            'rgb(45, 160, 130)',
-            'rgb(30, 140, 110)',
-        ];
-        const blues = [
-            'rgb(75, 180, 255)',
-            'rgb(54, 162, 235)',
-            'rgb(36, 140, 215)',
-            'rgb(20, 110, 190)',
-        ];
-        let palette = [ ...greens, ...reds ];
         // state of charge and temperatures
         const map = { 2:25, 1:-25, 0:0 };
         const cfg_chg = {
@@ -388,42 +401,42 @@ function load_charts() {
             data: {
                 labels,
                 datasets: [{
-                    label: "b1 chg",
+                        label: "chg/dis",
                     data: data.map(line => map[line[b1_chg]]),
                     stack: "stack",
                     ...def3
                 },{
-                    label: "b2 chg",
+                    label: "chg/dis",
                     data: data.map(line => map[line[b2_chg]]),
                     stack: "stack",
                     ...def3
                 },{
-                    label: "b3 chg",
+                    label: "chg/dis",
                     data: data.map(line => map[line[b3_chg]]),
                     stack: "stack",
                     ...def3
                 },{
-                    label: "b4 chg",
+                    label: "chg/dis",
                     data: data.map(line => map[line[b4_chg]]),
                     stack: "stack",
                     ...def3
                 },{
-                    label: "b1 hot",
+                    label: "heat",
                     data: data.map(line => map[line[b1_hot]]),
                     stack: "stack",
                     ...def3
                 },{
-                    label: "b2 hot",
+                    label: "heat",
                     data: data.map(line => map[line[b2_hot]]),
                     stack: "stack",
                     ...def3
                 },{
-                    label: "b3 hot",
+                    label: "heat",
                     data: data.map(line => map[line[b3_hot]]),
                     stack: "stack",
                     ...def3
                 },{
-                    label: "b4 hot",
+                    label: "heat",
                     data: data.map(line => map[line[b4_hot]]),
                     stack: "stack",
                     ...def3
@@ -442,8 +455,13 @@ function load_charts() {
                 ...plugins
             },
         };
+        palette = [ ...greens, ...reds ];
         cfg_chg.data.datasets.forEach((ds, i) => {
-            ds.backgroundColor = palette[i % palette.length];
+            // if (i < 4) ds.borderColor = yellows[i % yellows.length];
+            ds.backgroundColor = ctx => {
+                const { raw } = ctx;
+                return raw >= 0 ? palette[i % palette.length] : yellows[i % yellows.length];
+            }
         });
         new Chart(document.getElementById('change'), cfg_chg);
 
