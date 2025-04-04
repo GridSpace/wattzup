@@ -421,6 +421,9 @@
         "ch2Watt":    [ 70, "u16", "ichigh._serial_.ch2Watt"              ],
         "stdyTime":   [ 78, "u16", "ichigh._serial_.standbyTime"          ]
     },
+    "[A] AF": {
+        "serial":     [  4, "s16", ""                                     ]
+    },
     "[C] 22": {
         "sample": 1
     },
