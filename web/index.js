@@ -415,77 +415,77 @@ function load_charts() {
                 datasets: [{
                     label: "b1",
                     data: b1c,
-                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3,
                 },{
                     label: "b2",
                     data: b2c,
-                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b3",
                     data: b3c,
-                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b4",
                     data: b4c,
-                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b1",
                     data: b1d,
-                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3,
                 },{
                     label: "b2",
                     data: b2d,
-                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b3",
                     data: b3d,
-                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b4",
                     data: b4d,
-                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b1",
                     data: data.map(line => map[line[b1_hot]]),
                     data: b1h,
-                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b2",
                     data: data.map(line => map[line[b2_hot]]),
                     data: b2h,
-                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b3",
                     data: data.map(line => map[line[b3_hot]]),
                     data: b3h,
-                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b4",
                     data: data.map(line => map[line[b4_hot]]),
                     data: b4h,
-                    width: ({chart}) => (chart.chartArea || {}).width / data.length - 1,
+                    width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 }]
