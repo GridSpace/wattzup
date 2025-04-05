@@ -47,8 +47,10 @@ some arguments take values (`Y` vs `N`) and some take optional arguments meaning
 | --rty     | Y        | `filter` to messages with a given record type
 | --sample  | N        | enable sampling defined per-record type in `structs.json`
 | --scan    | Y        | enable payload scanning for value ranges (see source) <br> establish correlations with EF api data in given time windows
+| --scanf   | Y        | like `--scan` for float values
 | --seq     | N        | output stream sequence delta value
 | --sh2     | Y        | `filter` to messages with a given header sh2 value
+| --signed  | N        | interpret `--scan` values as signed when matching
 | --smo     | optional | show and/or `filter` to messages with a given module stream
 | --stat    | N        | at completion, create a `cl-streams.tsv` report
 | --str     | optional | show and/or `filter` to messages with a given device stream

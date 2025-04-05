@@ -131,6 +131,8 @@
         "temp":       [  46,  "u8", "bp5000._serial_.temp"                ],
         "chgState":   [  47,  "u8", "bp5000._serial_.chgState"            ],
         "remainCap":  [  57, "u32", "bp5000._serial_.remainCap"           ],
+        "maxVol":     [  65, "u16", "bp5000._serial_.maxCellVol"          ],
+        "minVol":     [  69, "u16", "bp5000._serial_.minCellVol"          ],
         "remainTime": [  86, "u16", "bp5000._serial_.remainTime"          ],
         "inWatts":    [  78,  "u8", "bp5000._serial_.inWatts"             ],
         "outWatts":   [  82, "i32", "bp5000._serial_.outWatts"            ],
@@ -324,6 +326,7 @@
     "D2:20": {
         "sample":     1,
         "serial":     [  1,  "s16", ""                                    ],
+        "powerCap":   [ 62,  "f32", "bp5000._serial_.powerCapability"     ],
         "comment":    "data sent to app when opened"
     },
     "D4:03": {
