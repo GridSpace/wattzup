@@ -1,4 +1,6 @@
 {
+    "ABOUT": "See the decode() function in canlog.js",
+
     "---- Channel A ----": "---------------------------------------------",
     "[A] AF": {
         "serial":     [  4, "s16", ""                                     ]
@@ -291,6 +293,9 @@
         "alt2VoltLmE":[ 121,  "u8", "kitscc._serial_.alt2VoltLmtEn"       ]
     },
     "C3": {},
+    "C4:03": {
+        "serial":     [  4, "s16", ""                                     ]
+    },
     "CB": {
         "sample":     100,
         "b0":         [  0, "u8", ""                                      ]
