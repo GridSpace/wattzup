@@ -186,7 +186,8 @@ function load_charts() {
         for (let col of [ b1_chg, b2_chg, b3_chg, b4_chg ]) {
             for (let line of lines) {
                 let val = line[col];
-                if (val === '2') line[col] = '-1';
+                if (val === '1') line[col] = '-1';
+                if (val === '2') line[col] = '1';
             }
         }
 
@@ -411,73 +412,73 @@ function load_charts() {
             data: {
                 datasets: [{
                     label: "b1",
-                    data: data.map((line,x) => line[b1_chg] > 0 ? { x:labels[x], y:'b1c' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b1_chg] > 0 ? { x:labels[x], y:'b1c' } : {}),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3,
                 },{
                     label: "b2",
-                    data: data.map((line,x) => line[b2_chg] > 0 ? { x:labels[x], y:'b2c' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b2_chg] > 0 ? { x:labels[x], y:'b2c' } : {}),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b3",
-                    data: data.map((line,x) => line[b3_chg] > 0 ? { x:labels[x], y:'b3c' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b3_chg] > 0 ? { x:labels[x], y:'b3c' } : {}),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b4",
-                    data: data.map((line,x) => line[b4_chg] > 0 ? { x:labels[x], y:'b4c' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b4_chg] > 0 ? { x:labels[x], y:'b4c' } : {}),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b1",
-                    data: data.map((line,x) => line[b1_chg] < 0 ? { x:labels[x], y:'b1d' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b1_chg] < 0 ? { x:labels[x], y:'b1d' } : {}),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3,
                 },{
                     label: "b2",
-                    data: data.map((line,x) => line[b2_chg] < 0 ? { x:labels[x], y:'b2d' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b2_chg] < 0 ? { x:labels[x], y:'b2d' } : {}),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b3",
-                    data: data.map((line,x) => line[b3_chg] < 0 ? { x:labels[x], y:'b3d' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b3_chg] < 0 ? { x:labels[x], y:'b3d' } : {}),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b4",
-                    data: data.map((line,x) => line[b4_chg] < 0 ? { x:labels[x], y:'b4d' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b4_chg] < 0 ? { x:labels[x], y:'b4d' } : {}),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b1",
-                    data: data.map((line,x) => line[b1_hot] > 0 ? { x:labels[x], y:'b1h' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b1_hot] > 0 ? { x:labels[x], y:'b1h' } : {}),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b2",
-                    data: data.map((line,x) => line[b2_hot] > 0 ? { x:labels[x], y:'b2h' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b2_hot] > 0 ? { x:labels[x], y:'b2h' } : {}),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b3",
-                    data: data.map((line,x) => line[b3_hot] > 0 ? { x:labels[x], y:'b3h' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b3_hot] > 0 ? { x:labels[x], y:'b3h' } : {}),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b4",
-                    data: data.map((line,x) => line[b4_hot] > 0 ? { x:labels[x], y:'b4h' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b4_hot] > 0 ? { x:labels[x], y:'b4h' } : {}),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
@@ -517,7 +518,7 @@ function load_charts() {
                 ...plugins
             },
         };
-        palette = [ ...greens, ...yellows, ...reds ];
+        palette = [ ...yellows, ...greens, ...reds ];
         cfg_chg.data.datasets.forEach((ds, i) => {
             ds.backgroundColor = palette[i % palette.length];
         });
