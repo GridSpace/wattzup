@@ -75,6 +75,14 @@
     "49": {
         "sample":     1
     },
+    "49:02": {
+        "sample":     1,
+        "pvInstate":  [  3,  "u8", ""                                     ]
+    },
+    "49:05": {
+        "sample":     1,
+        "pvInstate":  [  3,  "u8", ""                                     ]
+    },
     "49:51": {
         "dcAltState": [  7,  "u8", ""                                     ],
         "dcOutState": [  9,  "u8", ""                                     ]
@@ -351,21 +359,23 @@
     },
     "E1": {
         "comment":    "some sort of counter",
-        "b0":         [  0, "u8", ""                                      ],
-        "b1":         [  1, "u8", ""                                      ],
-        "b2":         [  2, "u8", ""                                      ]
+        "count":      [  1, "u8", ""                                      ],
+        "value":      [  2, "u8", ""                                      ]
     },
     "E1:02": {
         "comment":    "coincides with toggling solar input",
-        "b0":         [  0, "u8", ""                                      ],
-        "b1":         [  1, "u8", ""                                      ],
-        "b2":         [  2, "u8", ""                                      ]
+        "count":      [  1, "u8", ""                                      ],
+        "value":      [  2, "u8", ""                                      ]
     },
     "E1:04": {
         "comment":    "coincides with toggling solar input",
-        "b0":         [  0, "u8", ""                                      ],
-        "b1":         [  1, "u8", ""                                      ],
-        "b2":         [  2, "u8", ""                                      ]
+        "count":      [  1, "u8", ""                                      ],
+        "value":      [  2, "u8", ""                                      ]
+    },
+    "E1:05": {
+        "comment":    "coincides with mysterious solar input state change (49:02, 49:05)",
+        "count":      [  1, "u8", ""                                      ],
+        "value":      [  2, "u8", ""                                      ]
     },
     "E1:20": {
         "sample":     1,
@@ -373,9 +383,8 @@
     },
     "E1:51": {
         "comment":    "coincides with toggling solar input",
-        "b0":         [  0, "u8", ""                                      ],
-        "b1":         [  1, "u8", ""                                      ],
-        "b2":         [  2, "u8", ""                                      ]
+        "count":      [  1, "u8", ""                                      ],
+        "value":      [  2, "u8", ""                                      ]
     },
     "E2:00": {
         "comment":    "data sent to app when opened",
@@ -392,6 +401,10 @@
     "E2:20": {
         "sample":     1,
         "comment":    "data sent to app when opened?"
+    },
+    "E4:01": {
+        "sample":     100,
+        "comment":    "[1417789520][ld_sys.c][working_exe][56 ][INFO]: LD_RUNING"
     },
     "F1:01": {
         "sample":     100,
