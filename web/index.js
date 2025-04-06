@@ -133,8 +133,6 @@ function load_charts() {
             .map(l => l.split(','));
 
         const head = lines.shift();
-        const labels = skip(lines.map(line => line[0].split(' ')[1]), merge);
-        const data = avg(lines.map(l => l.map(c => parseFloat(c))), merge);
 
         const tot_rem = head.indexOf('tot_rem');
         const tot_win = head.indexOf('tot_win');
@@ -184,6 +182,16 @@ function load_charts() {
         const bms_wot = head.indexOf('bms_wot');
         const bms_ch2 = head.indexOf('bms_ch2');
 
+        // change charge/discharge from 0,1,2 to 0,1,-1
+        for (let col of [ b1_chg, b2_chg, b3_chg, b4_chg ]) {
+            for (let line of lines) {
+                let val = line[col];
+                if (val === '2') line[col] = '-1';
+            }
+        }
+
+        const labels = skip(lines.map(line => line[0].split(' ')[1]), merge);
+        const data = avg(lines.map(l => l.map(c => parseFloat(c))), merge);
         const maxpv = Math.max(...data.map(line => Math.max(line[pv1_win], line[pv2_win], line[pv1_vin] / 1000, line[pv2_vin] / 1000)));
 
         console.log(window.data = { head, labels, data, tot_rem });
@@ -403,49 +411,49 @@ function load_charts() {
             data: {
                 datasets: [{
                     label: "b1",
-                    data: data.map((line,x) => line[b1_chg] > 1 ? { x:labels[x], y:'b1c' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b1_chg] > 0 ? { x:labels[x], y:'b1c' } : null).filter(v => v),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3,
                 },{
                     label: "b2",
-                    data: data.map((line,x) => line[b2_chg] > 1 ? { x:labels[x], y:'b2c' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b2_chg] > 0 ? { x:labels[x], y:'b2c' } : null).filter(v => v),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b3",
-                    data: data.map((line,x) => line[b3_chg] > 1 ? { x:labels[x], y:'b3c' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b3_chg] > 0 ? { x:labels[x], y:'b3c' } : null).filter(v => v),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b4",
-                    data: data.map((line,x) => line[b4_chg] > 1 ? { x:labels[x], y:'b4c' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b4_chg] > 0 ? { x:labels[x], y:'b4c' } : null).filter(v => v),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b1",
-                    data: data.map((line,x) => range(line[b1_chg],0,1) ? { x:labels[x], y:'b1d' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b1_chg] < 0 ? { x:labels[x], y:'b1d' } : null).filter(v => v),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3,
                 },{
                     label: "b2",
-                    data: data.map((line,x) => range(line[b2_chg],0,1) ? { x:labels[x], y:'b2d' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b2_chg] < 0 ? { x:labels[x], y:'b2d' } : null).filter(v => v),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b3",
-                    data: data.map((line,x) => range(line[b3_chg],0,1) ? { x:labels[x], y:'b3d' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b3_chg] < 0 ? { x:labels[x], y:'b3d' } : null).filter(v => v),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
                 },{
                     label: "b4",
-                    data: data.map((line,x) => range(line[b4_chg],0,1) ? { x:labels[x], y:'b4d' } : null).filter(v => v),
+                    data: data.map((line,x) => line[b4_chg] < 0 ? { x:labels[x], y:'b4d' } : null).filter(v => v),
                     width: ({chart}) => (chart.chartArea || {}).width / data.length,
                     height: ({chart}) => (chart.chartArea || {}).height / 12 - 1,
                     ...def3
