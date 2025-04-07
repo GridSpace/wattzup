@@ -77,11 +77,13 @@
     },
     "49:02": {
         "sample":     1,
-        "pvInstate":  [  3,  "u8", ""                                     ]
+        "comment":    "PV1 0=off, 1=idle, 6=generating (:35)",
+        "pv1State":   [  3,  "u8", ""                                     ]
     },
     "49:05": {
         "sample":     1,
-        "pvInstate":  [  3,  "u8", ""                                     ]
+        "comment":    "PV2 0=off, 1=idle, 6=generating (:35)",
+        "pv2State":   [  3,  "u8", ""                                     ]
     },
     "49:51": {
         "dcAltState": [  7,  "u8", ""                                     ],
@@ -237,9 +239,8 @@
     "A0": {
         "sample":     10,
         "comment":    "some sort of counter. grouped by module record type",
-        "b0":         [  0, "u8", ""                                      ],
-        "b1":         [  1, "u8", ""                                      ],
-        "b2":         [  2, "u8", ""                                      ]
+        "count":      [  1, "u8", ""                                      ],
+        "value":      [  2, "u8", ""                                      ]
     },
     "A3": {
         "comment":    "toggle inputs / outputs through phone app. A3:05 and A3:50",
@@ -295,6 +296,10 @@
         "l2Curr":     [  68, "u16", "kitscc._serial_.l2Curr"              ],
         "hs1Temp":    [  72,  "u8", "kitscc._serial_.hs1Temp"             ],
         "hs2Temp":    [  74,  "u8", "kitscc._serial_.hs2Temp"             ],
+        "mppt1SwSta": [  80,  "u8", "kitscc._serial_.mppt1SwSta"          ],
+        "mppt2SwSta": [  81,  "u8", "kitscc._serial_.mppt2SwSta"          ],
+        "mppt3SwSta": [  80,  "u8", ""                                    ],
+        "mppt4SwSta": [  81,  "u8", ""                                    ],
         "alt1CablLn": [  96, "u16", "kitscc._serial_.alt1CableLen"        ],
         "alt2CablLn": [ 100, "u16", "kitscc._serial_.alt2CableLen"        ],
         "alt1VoltLm": [ 116, "u16", "kitscc._serial_.alt1VoltLmt"         ],
@@ -373,7 +378,7 @@
         "value":      [  2, "u8", ""                                      ]
     },
     "E1:05": {
-        "comment":    "coincides with mysterious solar input state change (49:02, 49:05)",
+        "comment":    "coincides with solar input state change (49:02, 49:05)",
         "count":      [  1, "u8", ""                                      ],
         "value":      [  2, "u8", ""                                      ]
     },
@@ -415,7 +420,7 @@
         "comment":    "coincides with toggling solar input. verbose"
     },
     "F4": {
-        "comment":    "PV1 input toggle from console. F4:05 and F4:50",
+        "comment":    "PV1 input toggle from console. F4:05:52 and F4:50:52",
         "Set_PVIn1":  [  0, "u8", ""                                      ],
         "Set_PVIn2":  [  1, "u8", ""                                      ]
     },
