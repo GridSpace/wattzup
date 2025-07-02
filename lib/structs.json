@@ -3,7 +3,8 @@
 
     "---- Channel A ----": "---------------------------------------------",
     "[A] AF": {
-        "serial":     [  4, "s16", ""                                     ]
+        "comment":    "PowerStream Serial",
+        "serial":     [  3, "s16", ""                                     ]
     },
 
     "---- Channel B ----": "---------------------------------------------",
@@ -70,6 +71,16 @@
     },
     "37": {
         "sample":     100
+    },
+    "3C": {
+        "comment":     "This is the golden msg for battery to powerstream",
+        "serial":     [  3,  "s16", "onLineModuleSnList[x].moduleSn"      ],
+        "soc":        [  56,  "u8", "bp2000._serial_.soc"                 ],
+        "volt":       [  57, "u16", "bp2000._serial_.vol"                 ],
+        "temp":       [  114,  "u8", "bp2000._serial_.temp"               ],
+        "remainTime": [  124, "u16", "bp2000._serial_.remainTime"         ],
+        "bmsChgUpln": [  128, "u8", "bp2000._serial_.bmsChgUpln"          ],
+        "bmsChgDnln": [  129, "u8", "bp2000._serial_.bmsChgDownln"        ]
     },
     "3F": {},
     "49": {
@@ -247,6 +258,12 @@
         "Set_PVIn1":  [  0, "u8", ""                                      ],
         "Set_PVIn2":  [  1, "u8", ""                                      ]
     },
+    "AA:21": {
+        "sample":     10,
+        "serial":     [  0, "s16", "onLineModuleSnList[x].moduleSn"       ],
+        "errCode":    [ 16, "u16", "bbcin._serial_.errCode"               ],
+        "modVer":     [ 20, "dqr", "onLineModuleSnList[x].moduleVersion"  ]
+    },
     "AB": {
         "comment":    "coincides with toggling solar input"
     },
@@ -309,7 +326,8 @@
     },
     "C3": {},
     "C4:03": {
-        "serial":     [  4, "s16", ""                                     ]
+        "comment":    "PowerStream Serial",
+        "serial":     [  3, "s16", ""                                     ]
     },
     "CB": {
         "sample":     100,
