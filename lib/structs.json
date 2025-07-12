@@ -21,6 +21,32 @@
         "chgBatVol":  [ 26, "u16", "iclow._serial_.chgBatVol"             ],
         "realSoc":    [ 31,  "u8", "iclow._serial_.realSoc"               ]
     },
+    "13": {
+        "comment":    "PowerStream / Delta2 Battery Report",
+        "maxBattVol": [    3, "u16", "bp2000._serial_.maxVol"             ],
+        "minBattVol": [   12, "u16", "bp2000._serial_.minVol"             ],
+        "temp":       [   20,  "u8", "bp2000._serial_.temp"               ],
+        "maxCellVol": [   39, "u16", "bp2000._serial_.maxCellVol"         ],
+        "minCellVol": [   41, "u16", "bp2000._serial_.minCellVol"         ],
+        "cell_1":     [   75, "u16", "bp2000._serial_.c1"                 ],
+        "cell_2":     [   77, "u16", "bp2000._serial_.c2"                 ],
+        "cell_3":     [   79, "u16", "bp2000._serial_.c3"                 ],
+        "cell_4":     [   81, "u16", "bp2000._serial_.c4"                 ],
+        "cell_5":     [   83, "u16", "bp2000._serial_.c5"                 ],
+        "cell_6":     [   85, "u16", "bp2000._serial_.c6"                 ],
+        "cell_7":     [   87, "u16", "bp2000._serial_.c7"                 ],
+        "cell_8":     [   89, "u16", "bp2000._serial_.c8"                 ],
+        "cell_9":     [   91, "u16", "bp2000._serial_.c9"                 ],
+        "cell_10":    [   93, "u16", "bp2000._serial_.c10"                ],
+        "cell_11":    [   95, "u16", "bp2000._serial_.c11"                ],
+        "cell_12":    [   97, "u16", "bp2000._serial_.c12"                ],
+        "cell_13":    [   99, "u16", "bp2000._serial_.c13"                ],
+        "cell_14":    [  101, "u16", "bp2000._serial_.c14"                ],
+        "cell_15":    [  103, "u16", "bp2000._serial_.c15"                ],
+        "cell_16":    [  105, "u16", "bp2000._serial_.c16"                ],
+        "serial":     [  122, "s16", "bp2000._serial_.moduleSn"           ],
+        "volt":       [  148, "u16", "bp2000._serial_.volt"               ]
+    },
     "1B": {},
     "22": {
         "sample":     100
