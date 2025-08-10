@@ -1,0 +1,1138 @@
+{
+  "summary": {
+    "input_registers": {
+      "count": 81,
+      "range": {
+        "min": 0,
+        "max": 80
+      }
+    },
+    "hold_registers": {
+      "count": 21,
+      "range": {
+        "min": 0,
+        "max": 20
+      }
+    }
+  },
+  "registers": [
+    {
+      "register_type": "input",
+      "register_map": [
+        {
+          "register_number": 0,
+          "name": "Inverter Status",
+          "shortname": "inverter_status",
+          "datatype": "uint16",
+          "unit": "",
+          "unit_scale": 1.0,
+          "description": "Inverter working status",
+          "display_as": "enum",
+          "read_only": true,
+          "enum_values": [
+            {"value": 0, "name": "standby", "description": "Standby"},
+            {"value": 1, "name": "fault", "description": "Inverter is in Fault status"},
+            {"value": 2, "name": "programming", "description": "Firmware update is in progress"},
+            {"value": 4, "name": "pv_on_grid", "description": "PV power export to load and grid"},
+            {"value": 8, "name": "pv_charge", "description": "PV power used to charge battery"},
+            {"value": 12, "name": "pv_charge_on_grid", "description": "PV power used to charge battery, and excess part export to load or grid"},
+            {"value": 16, "name": "battery_on_grid", "description": "Battery discharge power to load or grid"},
+            {"value": 20, "name": "pv_battery_on_grid", "description": "PV and Battery discharge power to load or grid"},
+            {"value": 32, "name": "ac_charge", "description": "Grid power used to charge battery"},
+            {"value": 40, "name": "pv_ac_charge", "description": "PV power and grid power used to charge battery"},
+            {"value": 64, "name": "battery_off_grid", "description": "Battery power backup"},
+            {"value": 128, "name": "pv_off_grid", "description": "PV power backup (PV power is unstable and this mode is not suggested)"},
+            {"value": 192, "name": "pv_battery_off_grid", "description": "PV+ Battery power backup"},
+            {"value": 136, "name": "pv_charge_off_grid", "description": "PV power used to power backup and the excess part used to charge battery"}
+          ]
+        },
+        {
+          "register_number": 1,
+          "name": "PV1 Voltage",
+          "shortname": "pv1_voltage",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "PV1 voltage (Vpv1)",
+          "read_only": true
+        },
+        {
+          "register_number": 2,
+          "name": "PV2 Voltage",
+          "shortname": "pv2_voltage",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "PV2 voltage (Vpv2)",
+          "read_only": true
+        },
+        {
+          "register_number": 3,
+          "name": "PV3 Voltage",
+          "shortname": "pv3_voltage",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "PV3 voltage (Vpv3)",
+          "read_only": true
+        },
+        {
+          "register_number": 4,
+          "name": "Battery Voltage",
+          "shortname": "battery_voltage",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "Battery voltage (Vbat)",
+          "read_only": true
+        },
+        {
+          "register_number": 5,
+          "name": "Battery Status",
+          "shortname": "battery_status",
+          "datatype": "uint16",
+          "unit": "%",
+          "unit_scale": 1.0,
+          "description": "Battery SOC (State of Charge) and SOH (State of Health)",
+          "display_as": "fields",
+          "read_only": true,
+          "fields": [
+            {
+              "name": "soc",
+              "description": "Battery State of Charge",
+              "unit": "%",
+              "range": "0-100",
+              "byte": 0
+            },
+            {
+              "name": "soh", 
+              "description": "Battery State of Health",
+              "unit": "%",
+              "range": "0-100",
+              "byte": 1
+            }
+          ]
+        },
+        {
+          "register_number": 6,
+          "name": "Internal Fault",
+          "shortname": "internal_fault",
+          "datatype": "uint32",
+          "unit": "",
+          "unit_scale": 1.0,
+          "description": "Internal fault code",
+          "display_as": "flags",
+          "read_only": true,
+          "flags": [
+            {"bit": 0, "name": "internal_comm_fault_1", "description": "Internal communication fault 1"},
+            {"bit": 1, "name": "model_fault", "description": "Model fault"},
+            {"bit": 2, "name": "afci_comm_failure", "description": "AFCI communication failure"},
+            {"bit": 3, "name": "meter_comm_failure", "description": "Meter communication failure"},
+            {"bit": 4, "name": "battery_charge_discharge_forbidden", "description": "Both charge and discharge forbidden by battery"},
+            {"bit": 5, "name": "auto_test_failed", "description": "Auto test failed"},
+            {"bit": 6, "name": "lcd_comm_failure", "description": "LCD communication failure"},
+            {"bit": 7, "name": "paralleling_can_lost", "description": "Paralleling CAN communication lost"},
+            {"bit": 8, "name": "master_unit_lost", "description": "Master unit lost in paralleling system"},
+            {"bit": 9, "name": "multiple_master_units", "description": "Multiple master units in paralleling system"},
+            {"bit": 10, "name": "ac_input_inconsistent", "description": "AC input inconsistent in paralleling system"},
+            {"bit": 11, "name": "ups_short", "description": "UPS short"},
+            {"bit": 12, "name": "ups_reverse_current", "description": "Reverse current on UPS output"},
+            {"bit": 13, "name": "bus_short", "description": "BUS short"},
+            {"bit": 14, "name": "grid_phases_inconsistent", "description": "Grid phases inconsistent in 3phase paralleling system"},
+            {"bit": 15, "name": "relay_check_fault", "description": "Relay Check Fault"},
+            {"bit": 16, "name": "internal_comm_fault_2", "description": "Internal communication fault 2"},
+            {"bit": 17, "name": "internal_comm_fault_3", "description": "Internal communication fault 3"},
+            {"bit": 18, "name": "bus_voltage_high", "description": "BUS Voltage high"},
+            {"bit": 19, "name": "eps_connection_fault", "description": "EPS connection fault"},
+            {"bit": 20, "name": "pv_voltage_high", "description": "PV Voltage high"},
+            {"bit": 21, "name": "over_current_protection", "description": "Over current protection"},
+            {"bit": 22, "name": "neutral_fault", "description": "Neutral fault"},
+            {"bit": 23, "name": "pv_short", "description": "PV short"},
+            {"bit": 24, "name": "radiator_temp_out_of_range", "description": "Radiator temperature out of range"},
+            {"bit": 25, "name": "internal_fault", "description": "Internal Fault"},
+            {"bit": 26, "name": "cpu_sample_inconsistent", "description": "Sample inconsistent between Main CPU and redundant CPU"},
+            {"bit": 27, "name": "eps_overload", "description": "EPS overload"},
+            {"bit": 28, "name": "eps_voltage_high", "description": "EPS voltage high"},
+            {"bit": 29, "name": "meter_reverse_connection", "description": "Meter reverse connection"},
+            {"bit": 30, "name": "internal_comm_fault_4", "description": "Internal communication fault 4"},
+            {"bit": 31, "name": "dcv_high", "description": "DCV high"}
+          ]
+        },
+        {
+          "register_number": 7,
+          "name": "PV1 Power",
+          "shortname": "pv1_power",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "PV1 power (Ppv1)",
+          "read_only": true
+        },
+        {
+          "register_number": 8,
+          "name": "PV2 Power",
+          "shortname": "pv2_power",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "PV2 power (Ppv2)",
+          "read_only": true
+        },
+        {
+          "register_number": 9,
+          "name": "PV3 Power",
+          "shortname": "pv3_power",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "PV3 power (Ppv3)",
+          "read_only": true
+        },
+        {
+          "register_number": 10,
+          "name": "Charge Power",
+          "shortname": "charge_power",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "Battery charging power (Pcharge)",
+          "read_only": true
+        },
+        {
+          "register_number": 11,
+          "name": "Discharge Power",
+          "shortname": "discharge_power",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "Battery discharging power (Pdischarge)",
+          "read_only": true
+        },
+        {
+          "register_number": 12,
+          "name": "Grid Voltage R",
+          "shortname": "grid_voltage_r",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "R-phase mains voltage (VacR)",
+          "read_only": true
+        },
+        {
+          "register_number": 13,
+          "name": "Grid Voltage S",
+          "shortname": "grid_voltage_s",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "S-phase mains voltage (VacS)",
+          "read_only": true
+        },
+        {
+          "register_number": 14,
+          "name": "Grid Voltage T",
+          "shortname": "grid_voltage_t",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "T-phase mains voltage (VacT)",
+          "read_only": true
+        },
+        {
+          "register_number": 15,
+          "name": "Grid Frequency",
+          "shortname": "grid_frequency",
+          "datatype": "uint16",
+          "unit": "Hz",
+          "unit_scale": 0.01,
+          "description": "Mains frequency (Fac)",
+          "read_only": true
+        },
+        {
+          "register_number": 16,
+          "name": "Output Power",
+          "shortname": "output_power",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "Inverter output power (Pinv)",
+          "read_only": true
+        },
+        {
+          "register_number": 17,
+          "name": "AC Charging Power",
+          "shortname": "ac_charging_power",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "AC charging rectified power (Prec)",
+          "read_only": true
+        },
+        {
+          "register_number": 18,
+          "name": "Inverter Current",
+          "shortname": "inverter_current",
+          "datatype": "uint16",
+          "unit": "A",
+          "unit_scale": 0.01,
+          "description": "Inverter current RMS (IinvRMS)",
+          "read_only": true
+        },
+        {
+          "register_number": 19,
+          "name": "Power Factor",
+          "shortname": "power_factor",
+          "datatype": "uint16",
+          "unit": "",
+          "unit_scale": 0.001,
+          "description": "Power factor (PF). For x in (0,1000]: PF = x/1000. For x in (1000,2000): PF = (1000-x)/1000",
+          "read_only": true
+        },
+        {
+          "register_number": 20,
+          "name": "EPS Voltage R",
+          "shortname": "eps_voltage_r",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "R-phase off-grid output voltage (VepsR)",
+          "read_only": true
+        },
+        {
+          "register_number": 21,
+          "name": "EPS Voltage S",
+          "shortname": "eps_voltage_s",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "S-phase off-grid output voltage (VepsS)",
+          "read_only": true
+        },
+        {
+          "register_number": 22,
+          "name": "EPS Voltage T",
+          "shortname": "eps_voltage_t",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "T-phase off-grid output voltage (VepsT)",
+          "read_only": true
+        },
+        {
+          "register_number": 23,
+          "name": "EPS Frequency",
+          "shortname": "eps_frequency",
+          "datatype": "uint16",
+          "unit": "Hz",
+          "unit_scale": 0.01,
+          "description": "Off-grid output frequency (Feps)",
+          "read_only": true
+        },
+        {
+          "register_number": 24,
+          "name": "EPS Power",
+          "shortname": "eps_power",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "Off-grid inverter power (Peps)",
+          "read_only": true
+        },
+        {
+          "register_number": 25,
+          "name": "EPS Apparent Power",
+          "shortname": "eps_apparent_power",
+          "datatype": "uint16",
+          "unit": "VA",
+          "unit_scale": 1.0,
+          "description": "Off-grid apparent power (Seps)",
+          "read_only": true
+        },
+        {
+          "register_number": 26,
+          "name": "Grid Export Power",
+          "shortname": "grid_export_power",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "Export power to grid (Ptogrid)",
+          "read_only": true
+        },
+        {
+          "register_number": 27,
+          "name": "Grid Import Power",
+          "shortname": "grid_import_power",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "Import power from grid (Ptouser)",
+          "read_only": true
+        },
+        {
+          "register_number": 28,
+          "name": "PV1 Energy Today",
+          "shortname": "pv1_energy_today",
+          "datatype": "uint16",
+          "unit": "kWh",
+          "unit_scale": 0.1,
+          "description": "PV1 power generation today (Epv1_day)",
+          "read_only": true
+        },
+        {
+          "register_number": 29,
+          "name": "PV2 Energy Today",
+          "shortname": "pv2_energy_today",
+          "datatype": "uint16",
+          "unit": "kWh",
+          "unit_scale": 0.1,
+          "description": "PV2 power generation today (Epv2_day)",
+          "read_only": true
+        },
+        {
+          "register_number": 30,
+          "name": "PV3 Energy Today",
+          "shortname": "pv3_energy_today",
+          "datatype": "uint16",
+          "unit": "kWh",
+          "unit_scale": 0.1,
+          "description": "PV3 power generation today (Epv3_day)",
+          "read_only": true
+        },
+        {
+          "register_number": 31,
+          "name": "Grid Energy Today",
+          "shortname": "grid_energy_today",
+          "datatype": "uint16",
+          "unit": "kWh",
+          "unit_scale": 0.1,
+          "description": "Grid-connected inverter output energy today (Einv_day)",
+          "read_only": true
+        },
+        {
+          "register_number": 32,
+          "name": "AC Charge Energy Today",
+          "shortname": "ac_charge_energy_today",
+          "datatype": "uint16",
+          "unit": "kWh",
+          "unit_scale": 0.1,
+          "description": "AC charging rectified energy today (Erec_day)",
+          "read_only": true
+        },
+        {
+          "register_number": 33,
+          "name": "Battery Charge Energy Today",
+          "shortname": "battery_charge_energy_today",
+          "datatype": "uint16",
+          "unit": "kWh",
+          "unit_scale": 0.1,
+          "description": "Charged energy today (Echg_day)",
+          "read_only": true
+        },
+        {
+          "register_number": 34,
+          "name": "Battery Discharge Energy Today",
+          "shortname": "battery_discharge_energy_today",
+          "datatype": "uint16",
+          "unit": "kWh",
+          "unit_scale": 0.1,
+          "description": "Discharged energy today (Edischg_day)",
+          "read_only": true
+        },
+        {
+          "register_number": 35,
+          "name": "EPS Energy Today",
+          "shortname": "eps_energy_today",
+          "datatype": "uint16",
+          "unit": "kWh",
+          "unit_scale": 0.1,
+          "description": "Off-grid output energy today (Eeps_day)",
+          "read_only": true
+        },
+        {
+          "register_number": 36,
+          "name": "Grid Export Energy Today",
+          "shortname": "grid_export_energy_today",
+          "datatype": "uint16",
+          "unit": "kWh",
+          "unit_scale": 0.1,
+          "description": "Export energy to grid today (Etogrid_day)",
+          "read_only": true
+        },
+        {
+          "register_number": 37,
+          "name": "Grid Import Energy Today",
+          "shortname": "grid_import_energy_today",
+          "datatype": "uint16",
+          "unit": "kWh",
+          "unit_scale": 0.1,
+          "description": "Import energy from grid today (Etouser_day)",
+          "read_only": true
+        },
+        {
+          "register_number": 38,
+          "name": "Bus Voltage 1",
+          "shortname": "bus_voltage_1",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "Bus 1 voltage (Vbus1)",
+          "read_only": true
+        },
+        {
+          "register_number": 39,
+          "name": "Bus Voltage 2",
+          "shortname": "bus_voltage_2",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "Bus 2 voltage (Vbus2)",
+          "read_only": true
+        },
+        {
+          "register_number": 40,
+          "name": "Grid Voltage Phase A",
+          "shortname": "grid_voltage_a",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "Grid voltage phase A",
+          "read_only": true
+        },
+        {
+          "register_number": 41,
+          "name": "Grid Voltage Phase B",
+          "shortname": "grid_voltage_b",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "Grid voltage phase B",
+          "read_only": true
+        },
+        {
+          "register_number": 42,
+          "name": "Grid Voltage Phase C",
+          "shortname": "grid_voltage_c",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "Grid voltage phase C",
+          "read_only": true
+        },
+        {
+          "register_number": 43,
+          "name": "Grid Current Phase A",
+          "shortname": "grid_current_a",
+          "datatype": "uint16",
+          "unit": "A",
+          "unit_scale": 0.1,
+          "description": "Grid current phase A",
+          "read_only": true
+        },
+        {
+          "register_number": 44,
+          "name": "Grid Current Phase B",
+          "shortname": "grid_current_b",
+          "datatype": "uint16",
+          "unit": "A",
+          "unit_scale": 0.1,
+          "description": "Grid current phase B",
+          "read_only": true
+        },
+        {
+          "register_number": 45,
+          "name": "Grid Current Phase C",
+          "shortname": "grid_current_c",
+          "datatype": "uint16",
+          "unit": "A",
+          "unit_scale": 0.1,
+          "description": "Grid current phase C",
+          "read_only": true
+        },
+        {
+          "register_number": 46,
+          "name": "Grid Power Factor Phase A",
+          "shortname": "grid_pf_a",
+          "datatype": "uint16",
+          "unit": "",
+          "unit_scale": 0.001,
+          "description": "Grid power factor phase A",
+          "read_only": true
+        },
+        {
+          "register_number": 47,
+          "name": "Grid Power Factor Phase B",
+          "shortname": "grid_pf_b",
+          "datatype": "uint16",
+          "unit": "",
+          "unit_scale": 0.001,
+          "description": "Grid power factor phase B",
+          "read_only": true
+        },
+        {
+          "register_number": 48,
+          "name": "Grid Power Factor Phase C",
+          "shortname": "grid_pf_c",
+          "datatype": "uint16",
+          "unit": "",
+          "unit_scale": 0.001,
+          "description": "Grid power factor phase C",
+          "read_only": true
+        },
+        {
+          "register_number": 49,
+          "name": "Grid Active Power Phase A",
+          "shortname": "grid_active_power_a",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "Grid active power phase A",
+          "read_only": true
+        },
+        {
+          "register_number": 50,
+          "name": "Grid Active Power Phase B",
+          "shortname": "grid_active_power_b",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "Grid active power phase B",
+          "read_only": true
+        },
+        {
+          "register_number": 51,
+          "name": "Grid Active Power Phase C",
+          "shortname": "grid_active_power_c",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "Grid active power phase C",
+          "read_only": true
+        },
+        {
+          "register_number": 52,
+          "name": "Grid Reactive Power Phase A",
+          "shortname": "grid_reactive_power_a",
+          "datatype": "uint16",
+          "unit": "VAR",
+          "unit_scale": 1.0,
+          "description": "Grid reactive power phase A",
+          "read_only": true
+        },
+        {
+          "register_number": 53,
+          "name": "Grid Reactive Power Phase B",
+          "shortname": "grid_reactive_power_b",
+          "datatype": "uint16",
+          "unit": "VAR",
+          "unit_scale": 1.0,
+          "description": "Grid reactive power phase B",
+          "read_only": true
+        },
+        {
+          "register_number": 54,
+          "name": "Grid Reactive Power Phase C",
+          "shortname": "grid_reactive_power_c",
+          "datatype": "uint16",
+          "unit": "VAR",
+          "unit_scale": 1.0,
+          "description": "Grid reactive power phase C",
+          "read_only": true
+        },
+        {
+          "register_number": 55,
+          "name": "Grid Apparent Power Phase A",
+          "shortname": "grid_apparent_power_a",
+          "datatype": "uint16",
+          "unit": "VA",
+          "unit_scale": 1.0,
+          "description": "Grid apparent power phase A",
+          "read_only": true
+        },
+        {
+          "register_number": 56,
+          "name": "Grid Apparent Power Phase B",
+          "shortname": "grid_apparent_power_b",
+          "datatype": "uint16",
+          "unit": "VA",
+          "unit_scale": 1.0,
+          "description": "Grid apparent power phase B",
+          "read_only": true
+        },
+        {
+          "register_number": 57,
+          "name": "Grid Apparent Power Phase C",
+          "shortname": "grid_apparent_power_c",
+          "datatype": "uint16",
+          "unit": "VA",
+          "unit_scale": 1.0,
+          "description": "Grid apparent power phase C",
+          "read_only": true
+        },
+        {
+          "register_number": 58,
+          "name": "Grid Total Active Power",
+          "shortname": "grid_total_active_power",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "Grid total active power",
+          "read_only": true
+        },
+        {
+          "register_number": 59,
+          "name": "Grid Total Reactive Power",
+          "shortname": "grid_total_reactive_power",
+          "datatype": "uint16",
+          "unit": "VAR",
+          "unit_scale": 1.0,
+          "description": "Grid total reactive power",
+          "read_only": true
+        },
+        {
+          "register_number": 60,
+          "name": "Fault Code Low",
+          "shortname": "fault_code_low",
+          "datatype": "uint16",
+          "unit": "",
+          "unit_scale": 1.0,
+          "description": "Fault code low word",
+          "read_only": true
+        },
+        {
+          "register_number": 61,
+          "name": "Fault Code High",
+          "shortname": "fault_code_high",
+          "datatype": "uint16",
+          "unit": "",
+          "unit_scale": 1.0,
+          "description": "Fault code high word",
+          "read_only": true
+        },
+        {
+          "register_number": 62,
+          "name": "Warning Code Low",
+          "shortname": "warning_code_low",
+          "datatype": "uint16",
+          "unit": "",
+          "unit_scale": 1.0,
+          "description": "Warning code low word",
+          "read_only": true
+        },
+        {
+          "register_number": 63,
+          "name": "Warning Code High",
+          "shortname": "warning_code_high",
+          "datatype": "uint16",
+          "unit": "",
+          "unit_scale": 1.0,
+          "description": "Warning code high word",
+          "read_only": true
+        },
+        {
+          "register_number": 64,
+          "name": "Internal Temperature",
+          "shortname": "internal_temp",
+          "datatype": "int16",
+          "unit": "°C",
+          "unit_scale": 1.0,
+          "description": "Internal ring temperature (Tinner)",
+          "read_only": true
+        },
+        {
+          "register_number": 65,
+          "name": "Radiator Temperature 1",
+          "shortname": "radiator_temp_1",
+          "datatype": "int16",
+          "unit": "°C",
+          "unit_scale": 1.0,
+          "description": "Radiator temperature 1 (Tradiator1)",
+          "read_only": true
+        },
+        {
+          "register_number": 66,
+          "name": "Radiator Temperature 2",
+          "shortname": "radiator_temp_2",
+          "datatype": "int16",
+          "unit": "°C",
+          "unit_scale": 1.0,
+          "description": "Radiator temperature 2 (Tradiator2)",
+          "read_only": true
+        },
+        {
+          "register_number": 67,
+          "name": "Battery Temperature",
+          "shortname": "battery_temp",
+          "datatype": "int16",
+          "unit": "°C",
+          "unit_scale": 1.0,
+          "description": "Battery temperature (Tbat)",
+          "read_only": true
+        },
+        {
+          "register_number": 68,
+          "name": "Battery Current",
+          "shortname": "battery_current",
+          "datatype": "int16",
+          "unit": "A",
+          "unit_scale": 0.1,
+          "description": "Battery current (Ibat)",
+          "read_only": true
+        },
+        {
+          "register_number": 69,
+          "name": "Runtime Low",
+          "shortname": "runtime_low",
+          "datatype": "uint16",
+          "unit": "s",
+          "unit_scale": 1.0,
+          "description": "Runtime low word",
+          "read_only": true
+        },
+        {
+          "register_number": 70,
+          "name": "Runtime High",
+          "shortname": "runtime_high",
+          "datatype": "uint16",
+          "unit": "s",
+          "unit_scale": 1.0,
+          "description": "Runtime high word",
+          "read_only": true
+        },
+        {
+          "register_number": 71,
+          "name": "AutoTest Status",
+          "shortname": "autotest_status",
+          "datatype": "uint16",
+          "unit": "",
+          "unit_scale": 1.0,
+          "description": "Auto test status and step",
+          "read_only": true
+        },
+        {
+          "register_number": 72,
+          "name": "AutoTest Limit",
+          "shortname": "autotest_limit",
+          "datatype": "uint16",
+          "unit": "0.1V/0.01Hz",
+          "unit_scale": 1.0,
+          "description": "Auto test limit",
+          "read_only": true
+        },
+        {
+          "register_number": 73,
+          "name": "PV1 Current",
+          "shortname": "pv1_current",
+          "datatype": "uint16",
+          "unit": "A",
+          "unit_scale": 0.1,
+          "description": "PV1 current (Ipv1)",
+          "read_only": true
+        },
+        {
+          "register_number": 74,
+          "name": "PV2 Current",
+          "shortname": "pv2_current",
+          "datatype": "uint16",
+          "unit": "A",
+          "unit_scale": 0.1,
+          "description": "PV2 current (Ipv2)",
+          "read_only": true
+        },
+        {
+          "register_number": 75,
+          "name": "PV3 Current",
+          "shortname": "pv3_current",
+          "datatype": "uint16",
+          "unit": "A",
+          "unit_scale": 0.1,
+          "description": "PV3 current (Ipv3)",
+          "read_only": true
+        },
+        {
+          "register_number": 76,
+          "name": "Grid Current",
+          "shortname": "grid_current",
+          "datatype": "uint16",
+          "unit": "A",
+          "unit_scale": 0.1,
+          "description": "Grid current (Igrid)",
+          "read_only": true
+        },
+        {
+          "register_number": 77,
+          "name": "AC Input Type",
+          "shortname": "ac_input_type",
+          "datatype": "uint16",
+          "unit": "",
+          "unit_scale": 1.0,
+          "description": "AC input type (0=Grid, 1=Generator)",
+          "read_only": true
+        },
+        {
+          "register_number": 78,
+          "name": "Grid Power Factor",
+          "shortname": "grid_power_factor",
+          "datatype": "int16",
+          "unit": "",
+          "unit_scale": 0.001,
+          "description": "Grid power factor (PFgrid)",
+          "read_only": true
+        },
+        {
+          "register_number": 79,
+          "name": "Grid Apparent Power",
+          "shortname": "grid_apparent_power",
+          "datatype": "uint16",
+          "unit": "VA",
+          "unit_scale": 1.0,
+          "description": "Grid apparent power (Sgrid)",
+          "read_only": true
+        },
+        {
+          "register_number": 80,
+          "name": "Grid Active Power",
+          "shortname": "grid_active_power",
+          "datatype": "int16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "Grid active power (Pgrid)",
+          "read_only": true
+        }
+      ]
+    },
+    {
+      "register_type": "hold",
+      "register_map": [
+        {
+          "register_number": 0,
+          "name": "Function Enable Flags",
+          "shortname": "function_enable",
+          "datatype": "uint16",
+          "unit": "",
+          "unit_scale": 1.0,
+          "description": "Function Enable Flags",
+          "display_as": "flags",
+          "read_only": false,
+          "flags": [
+            {"bit": 0, "name": "eps_en", "description": "Off-grid mode enabled"},
+            {"bit": 1, "name": "ovf_load_derate_en", "description": "Over frequency load reduction enable"},
+            {"bit": 2, "name": "drms_en", "description": "DRMS enabled"},
+            {"bit": 3, "name": "lvrt_en", "description": "Low Voltage Ride Through Enable"},
+            {"bit": 4, "name": "anti_island_en", "description": "Anti-islanding enable"},
+            {"bit": 5, "name": "neutral_detect_en", "description": "Zero ground detection enable"},
+            {"bit": 6, "name": "grid_on_power_ss_en", "description": "Grid-connected power soft start enable"},
+            {"bit": 7, "name": "ac_charge_en", "description": "AC Charge Enable"},
+            {"bit": 8, "name": "sw_seamlessly_en", "description": "Off-grid mode seamless switching enabled"},
+            {"bit": 9, "name": "set_to_standby", "description": "0: Standby 1: Power on"},
+            {"bit": 10, "name": "forced_dischg_en", "description": "Forced discharge enable"},
+            {"bit": 11, "name": "forced_chg_en", "description": "Force charge enable"},
+            {"bit": 12, "name": "iso_en", "description": "ISO enabled"},
+            {"bit": 13, "name": "gfci_en", "description": "GFCI enabled"},
+            {"bit": 14, "name": "dci_en", "description": "DCI enable"},
+            {"bit": 15, "name": "feed_in_grid_en", "description": "0-disable 1-enable"}
+          ]
+        },
+        {
+          "register_number": 1,
+          "name": "Output Voltage Setpoint",
+          "shortname": "output_voltage_setpoint",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "Output voltage setpoint in volts",
+          "read_only": false
+        },
+        {
+          "register_number": 2,
+          "name": "Output Current Limit",
+          "shortname": "output_current_limit",
+          "datatype": "uint16",
+          "unit": "A",
+          "unit_scale": 0.1,
+          "description": "Output current limit in amperes",
+          "read_only": false
+        },
+        {
+          "register_number": 3,
+          "name": "Output Power Limit",
+          "shortname": "output_power_limit",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "Output power limit in watts",
+          "read_only": false
+        },
+        {
+          "register_number": 4,
+          "name": "Fan Speed Setpoint",
+          "shortname": "fan_speed_setpoint",
+          "datatype": "uint16",
+          "unit": "RPM",
+          "unit_scale": 1.0,
+          "description": "Fan speed setpoint in RPM",
+          "read_only": false
+        },
+        {
+          "register_number": 5,
+          "name": "Output Enable",
+          "shortname": "output_enable",
+          "datatype": "uint16",
+          "unit": "",
+          "unit_scale": 1.0,
+          "description": "Output enable control (0=disabled, 1=enabled)",
+          "read_only": false
+        },
+        {
+          "register_number": 6,
+          "name": "Fan Control Mode",
+          "shortname": "fan_control_mode",
+          "datatype": "uint16",
+          "unit": "",
+          "unit_scale": 1.0,
+          "description": "Fan control mode (0=auto, 1=manual)",
+          "read_only": false
+        },
+        {
+          "register_number": 7,
+          "name": "Grid Voltage Setpoint",
+          "shortname": "grid_voltage_setpoint",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "Grid voltage setpoint in volts",
+          "read_only": false
+        },
+        {
+          "register_number": 8,
+          "name": "Grid Frequency Setpoint",
+          "shortname": "grid_frequency_setpoint",
+          "datatype": "uint16",
+          "unit": "Hz",
+          "unit_scale": 0.01,
+          "description": "Grid frequency setpoint in Hz",
+          "read_only": false
+        },
+        {
+          "register_number": 9,
+          "name": "Grid Power Factor Setpoint",
+          "shortname": "grid_power_factor_setpoint",
+          "datatype": "uint16",
+          "unit": "",
+          "unit_scale": 0.001,
+          "description": "Grid power factor setpoint",
+          "read_only": false
+        },
+        {
+          "register_number": 10,
+          "name": "Battery Charge Current Setpoint",
+          "shortname": "battery_charge_current_setpoint",
+          "datatype": "uint16",
+          "unit": "A",
+          "unit_scale": 0.1,
+          "description": "Battery charging current setpoint in amperes",
+          "read_only": false
+        },
+        {
+          "register_number": 11,
+          "name": "Battery Discharge Current Setpoint",
+          "shortname": "battery_discharge_current_setpoint",
+          "datatype": "uint16",
+          "unit": "A",
+          "unit_scale": 0.1,
+          "description": "Battery discharging current setpoint in amperes",
+          "read_only": false
+        },
+        {
+          "register_number": 12,
+          "name": "Battery Charge Voltage Setpoint",
+          "shortname": "battery_charge_voltage_setpoint",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "Battery charging voltage setpoint in volts",
+          "read_only": false
+        },
+        {
+          "register_number": 13,
+          "name": "Battery Discharge Voltage Setpoint",
+          "shortname": "battery_discharge_voltage_setpoint",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "Battery discharging voltage setpoint in volts",
+          "read_only": false
+        },
+        {
+          "register_number": 14,
+          "name": "Battery SOC High Setpoint",
+          "shortname": "battery_soc_high_setpoint",
+          "datatype": "uint16",
+          "unit": "%",
+          "unit_scale": 1.0,
+          "description": "Battery state of charge high limit setpoint",
+          "read_only": false
+        },
+        {
+          "register_number": 15,
+          "name": "Battery SOC Low Setpoint",
+          "shortname": "battery_soc_low_setpoint",
+          "datatype": "uint16",
+          "unit": "%",
+          "unit_scale": 1.0,
+          "description": "Battery state of charge low limit setpoint",
+          "read_only": false
+        },
+        {
+          "register_number": 16,
+          "name": "Grid Export Power Limit",
+          "shortname": "grid_export_power_limit",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "Maximum power export to grid limit in watts",
+          "read_only": false
+        },
+        {
+          "register_number": 17,
+          "name": "Grid Import Power Limit",
+          "shortname": "grid_import_power_limit",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "Maximum power import from grid limit in watts",
+          "read_only": false
+        },
+        {
+          "register_number": 18,
+          "name": "EPS Voltage Setpoint",
+          "shortname": "eps_voltage_setpoint",
+          "datatype": "uint16",
+          "unit": "V",
+          "unit_scale": 0.1,
+          "description": "EPS (off-grid) voltage setpoint in volts",
+          "read_only": false
+        },
+        {
+          "register_number": 19,
+          "name": "EPS Frequency Setpoint",
+          "shortname": "eps_frequency_setpoint",
+          "datatype": "uint16",
+          "unit": "Hz",
+          "unit_scale": 0.01,
+          "description": "EPS (off-grid) frequency setpoint in Hz",
+          "read_only": false
+        },
+        {
+          "register_number": 20,
+          "name": "EPS Power Limit",
+          "shortname": "eps_power_limit",
+          "datatype": "uint16",
+          "unit": "W",
+          "unit_scale": 1.0,
+          "description": "EPS (off-grid) power limit in watts",
+          "read_only": false
+        }
+      ]
+    }
+  ]
+} 
