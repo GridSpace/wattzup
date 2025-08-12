@@ -1,4 +1,14 @@
 {
+  "name": "gs-wattzup",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Power monitoring tools",
+  "main": "src/main.js",
+  "scripts": {
+    "setup": "npm i && npx vite build --config src/vite.config.js",
+    "start": "node lib/web",
+    "cli": "node src/main.js"
+  },
   "dependencies": {
     "@gridspace/net-level-client": "^0.1.10",
     "chart.js": "^4.4.1",
@@ -10,12 +20,9 @@
     "express": "^4.18.2",
     "hammerjs": "^2.0.8",
     "minimist": "^1.2.8",
+    "mqtt": "^5.5.0",
     "node-fetch": "^3.3.2",
     "static-serve": "^0.0.1"
-  },
-  "scripts": {
-    "setup": "npm i && npx vite build --config src/vite.config.js",
-    "start": "node lib/web"
   },
   "devDependencies": {
     "vite": "^6.2.5"
