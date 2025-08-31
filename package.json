@@ -1,7 +1,6 @@
 {
   "name": "gs-wattzup",
   "version": "1.0.0",
-  "type": "module",
   "description": "Power monitoring tools",
   "main": "src/main.js",
   "scripts": {

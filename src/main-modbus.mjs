@@ -5,8 +5,8 @@ import dotenv from 'dotenv';
 import minimist from 'minimist';
 import mqtt from 'mqtt';
 
-import { connectToHost, globalShutdown } from '../lib/modbus/collect.js';
-import { analyzePacketBuffer } from '../lib/modbus/analyze.js';
+import { connectToHost, globalShutdown } from '../lib/modbus/collect.mjs';
+import { analyzePacketBuffer } from '../lib/modbus/analyze.mjs';
 
 dotenv.config();
 

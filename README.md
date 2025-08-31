@@ -52,12 +52,12 @@ npm run setup
 
 collect some data over the network from your inverter:
 ```
-node src/main-modbus collect --hosts=[your-inverter-ips]
+node src/main-modbus.mjs collect --hosts=[your-inverter-ips]
 ```
 
 analyze the packets dumped to the `inv-logs` dir:
 ```
-node src/main-modbus analyze [path-to-packet-data-file]
+node src/main-modbus.mjs analyze [path-to-packet-data-file]
 ```
 
 things to note. the collector usually receives bursts of packets and
