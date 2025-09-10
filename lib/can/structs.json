@@ -3,7 +3,7 @@
 
     "---- Channel A ----": "---------------------------------------------",
     "[A] AF": {
-        "serial":     [  4, "s16", ""                                     ]
+        "serial":     [  3, "s16", ""                                     ]
     },
 
     "---- Channel B ----": "---------------------------------------------",
@@ -48,6 +48,38 @@
         "volt":       [  148, "u16", "bp2000._serial_.volt"               ]
     },
     "1B": {},
+    "1F": {
+        "comment":    "PowerStream / Delta3 Battery Report",
+        "TotCellVolt(mV)":  [   12, "u16", "bp2000._serial_.Vol"                ],
+        "maxCellVol":       [   39, "u16", "bp2000._serial_.maxCellVol"         ],
+        "minCellVol":       [   41, "u16", "bp2000._serial_.minCellVol"         ],
+        "temp5(°C)":        [   43,  "u8", "bp2000._serial_.temp"               ],
+        "temp6(°C)":        [   44,  "u8", "bp2000._serial_.temp"               ],
+        "temp7(°C)":        [   45,  "u8", "bp2000._serial_.temp"               ],
+        "temp8(°C)":        [   46,  "u8", "bp2000._serial_.temp"               ],
+        "deltaCellVol":     [   72, "u16", "bp2000._serial_.dCellVol"           ],
+        "cell_1Vol(mV)":    [   75, "u16", "bp2000._serial_.c1v"                ],
+        "cell_2Vol(mV)":    [   77, "u16", "bp2000._serial_.c2v"                ],
+        "cell_3Vol(mV)":    [   79, "u16", "bp2000._serial_.c3v"                ],
+        "cell_4Vol(mV)":    [   81, "u16", "bp2000._serial_.c4v"                ],
+        "cell_5Vol(mV)":    [   83, "u16", "bp2000._serial_.c5v"                ],
+        "cell_6Vol(mV)":    [   85, "u16", "bp2000._serial_.c6v"                ],
+        "cell_7Vol(mV)":    [   87, "u16", "bp2000._serial_.c7v"                ],
+        "cell_8Vol(mV)":    [   89, "u16", "bp2000._serial_.c8v"                ],
+        "cell_9Vol(mV)":    [   91, "u16", "bp2000._serial_.c9v"                ],
+        "cell_10Vol(mV)":   [   93, "u16", "bp2000._serial_.c10v"               ],
+        "cell_11Vol(mV)":   [   95, "u16", "bp2000._serial_.c11v"               ],
+        "cell_12Vol(mV)":   [   97, "u16", "bp2000._serial_.c12v"               ],
+        "cell_13Vol(mV)":   [   99, "u16", "bp2000._serial_.c13v"               ],
+        "cell_14Vol(mV)":   [  101, "u16", "bp2000._serial_.c14v"               ],
+        "cell_15Vol(mV)":   [  103, "u16", "bp2000._serial_.c15v"               ],
+        "cell_16Vol(mV)":   [  105, "u16", "bp2000._serial_.c16v"               ],
+        "temp1(°C)":        [  108,  "u8", "bp2000._serial_.temp"               ],
+        "temp2(°C)":        [  110,  "u8", "bp2000._serial_.temp"               ],
+        "temp3(°C)":        [  112,  "u8", "bp2000._serial_.temp"               ],
+        "temp4(°C)":        [  114,  "u8", "bp2000._serial_.temp"               ],
+        "serial":           [  290, "s16", "bp2000._serial_.moduleSn"           ]
+    },
     "22": {
         "sample":     100
     },
@@ -96,6 +128,26 @@
     },
     "37": {
         "sample":     100
+    },
+    "3C": {
+        "comment":                "This is the golden msg for battery to powerstream",
+        "Delta3 <B>3C":           [  3,  "s16", "onLineModuleSnList[x].moduleSn"      ],
+        "volt1(mV)":              [  41, "u16", "bp2000._serial_.vol"                 ],
+        "value1":                 [  45, "u16", ""                                    ],
+        "value2":                 [  52, "u16", ""                                    ],
+        "value3":                 [  54, "u16", ""                                    ],
+        "soc(%)":                 [  56,  "u8", "bp2000._serial_.soc"                 ],
+        "volt2(mV)":              [  57, "u16", "bp2000._serial_.vol"                 ],
+        "volt3(mV) ?":            [  61, "u16", "bp2000._serial_.vol"                 ],
+        "flag ?":                 [  63, "u16", ""                                    ],
+        "temp1(°C)":              [  114, "u8", "bp2000._serial_.temp"                ],
+        "temp2(°C)":              [  115, "u8", "bp2000._serial_.temp"                ],
+        "remainTimeCharge(s)":    [  120, "u32", "bp2000._serial_.remainTime"         ],
+        "remainTimeDischarge(s)": [  124, "u32", "bp2000._serial_.remainTime"         ],
+        "bmsChgUpln(%)":          [  128, "u8", "bp2000._serial_.bmsChgUpln"          ],
+        "bmsChgDnln(%)":          [  129, "u8", "bp2000._serial_.bmsChgDownln"        ],
+        "value4":                 [  130, "u8", ""                                    ],
+        "value5":                 [  131, "u8", ""                                    ]
     },
     "3F": {},
     "49": {
